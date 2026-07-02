@@ -1,0 +1,18 @@
+<div style="padding: 32px;">
+  <h1>Hello, Rails + Hotwire!!</h1>
+
+  <p>
+    This page is rendered through Rails layout.
+  </p>
+
+  <%= render partial: "message", locals: {
+    message: "처음 표시된 메시지입니다."
+  } %>
+
+  <p style="margin-top: 20px;">
+    <%= link_to "메시지 바꾸기",
+        home_message_path,
+        data: { turbo_frame: "message_box" },
+        style: "display:inline-block; padding:12px 16px; background:#222; color:white; text-decoration:none; border-radius:8px;" %>
+  </p>
+</div>
