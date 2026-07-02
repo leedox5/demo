@@ -1,18 +1,29 @@
-<div style="padding: 32px;">
-  <h1>Hello, Rails + Hotwire!!</h1>
+<div class="min-h-screen p-12 flex flex-col">
+  <div>
+    <h1>Hello, Rails + Hotwire!!</h1>
+    <p class="text-base">
+      This page is rendered through Rails layout.
+    </p>
 
-  <p>
-    This page is rendered through Rails layout.
-  </p>
+    <%= render partial: "message", locals: {
+      message: "처음 표시된 메시지입니다."
+    } %>
 
-  <%= render partial: "message", locals: {
-    message: "처음 표시된 메시지입니다."
-  } %>
+    <div class="flex justify-end mt-2">
+      <%= link_to "메시지 바꾸기",
+          home_message_path,
+          data: { turbo_frame: "message_box" },
+          class: "inline-flex rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700" %>
+    </div>
+  </div>
+  <div>
+    <div class="bg-gray-100 p-8">
+      <h1 class="text-3xl font-bold text-blue-600">
+        Hello Rails + TailwindCSS
+      </h1>
 
-  <p style="margin-top: 20px;">
-    <%= link_to "메시지 바꾸기",
-        home_message_path,
-        data: { turbo_frame: "message_box" },
-        style: "display:inline-block; padding:12px 16px; background:#222; color:white; text-decoration:none; border-radius:8px;" %>
-  </p>
+      <%= link_to "버튼 테스트", "#",
+        class: "inline-flex mt-4 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700" %>
+    </div>
+  </div>
 </div>
