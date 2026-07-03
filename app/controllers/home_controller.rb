@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @recent_posts = Post.includes(:user, comments: :user).order(created_at: :desc).limit(3)
   end
 
   def message
