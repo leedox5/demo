@@ -1,0 +1,14 @@
+<%= form_with(model: [post, Comment.new], class: "space-y-4") do |form| %>
+  <%= form.hidden_field :commentable_type, value: commentable_type %>
+  <%= form.hidden_field :commentable_id, value: commentable_id %>
+
+  <div>
+    <%= form.label :body, "댓글"
+    %>
+    <%= form.text_area :body, rows: 3, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" %>
+  </div>
+
+  <div class="flex justify-end">
+    <%= form.submit(submit_text, class: "rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-500") %>
+  </div>
+<% end %>
