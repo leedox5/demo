@@ -3,6 +3,7 @@
     <h1>Hello, Rails + Hotwire!!</h1>
     <p class="text-base">
       This page is rendered through Rails layout.
+      UA: <%= request.user_agent %>
     </p>
 
     <%= render partial: "message", locals: {
@@ -14,16 +15,6 @@
           home_message_path,
           data: { turbo_frame: "message_box" },
           class: "inline-flex rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700" %>
-    </div>
-  </div>
-  <div>
-    <div class="bg-gray-100 p-8">
-      <h1 class="text-3xl font-bold text-blue-600">
-        Hello Rails + TailwindCSS
-      </h1>
-
-      <%= link_to "버튼 테스트", "#",
-        class: "inline-flex mt-4 rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700" %>
     </div>
   </div>
 </div>

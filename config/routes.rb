@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "home/message", to: "home#message", as: "home_message"
+  get "css", to: "css#index", as: "css"
 end

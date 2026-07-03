@@ -24,6 +24,7 @@
   </head>
 
   <body class="bg-gray-50 text-gray-900">
+    <% unless request.user_agent&.include?("Hotwire") %>
     <nav class="border-b border-gray-200 bg-white shadow-sm">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <%= link_to "Demo", root_path, class: "text-lg font-semibold text-blue-600" %>
@@ -41,7 +42,7 @@
 
         <div class="hidden items-center gap-4 text-sm font-medium text-gray-700 md:flex">
           <%= link_to "Home", root_path, class: "hover:text-blue-600" %>
-          <%= link_to "메시지 바꾸기", home_message_path, class: "hover:text-blue-600" %>
+          <%= link_to "CSS", css_path, class: "hover:text-blue-600" %>
           <% if user_signed_in? %>
             <span class="text-gray-500"><%= current_user.email %></span>
             <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "hover:text-blue-600" %>
@@ -55,7 +56,7 @@
       <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white px-6 py-3 md:hidden">
         <div class="flex flex-col gap-2 text-sm font-medium text-gray-700">
           <%= link_to "Home", root_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
-          <%= link_to "메시지 바꾸기", home_message_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
+          <%= link_to "CSS", css_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <% if user_signed_in? %>
             <span class="rounded px-2 py-1 text-gray-500"><%= current_user.email %></span>
             <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "rounded px-2 py-1 text-left hover:bg-gray-100 hover:text-blue-600" %>
@@ -66,6 +67,7 @@
         </div>
       </div>
     </nav>
+    <% end %>
 
     <% if notice %>
       <div class="mx-auto mt-4 max-w-6xl rounded bg-green-100 px-4 py-3 text-sm text-green-800"><%= notice %></div>
