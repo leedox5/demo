@@ -4,7 +4,10 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.includes(:user).order(created_at: :desc)
+    @posts = Post.includes(:user, :group).order(created_at: :desc)
+    @posts = @posts.where(group_id: params[:group_id]) if params[:group_id].present?
+    @posts = @posts.search(params[:query]) if params[:query].present?
+    @groups = current_user&.groups&.order(:name) || Group.none
   end
 
   # GET /posts/1 or /posts/1.json
@@ -69,6 +72,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :group_id)
     end
 end

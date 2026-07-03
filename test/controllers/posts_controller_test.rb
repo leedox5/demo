@@ -2,6 +2,7 @@ require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in users(:one)
     @post = posts(:one)
   end
 
@@ -17,7 +18,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create post" do
     assert_difference("Post.count") do
-      post posts_url, params: { post: { body: @post.body, title: @post.title, user_id: @post.user_id } }
+      post posts_url, params: { post: { body: @post.body, title: @post.title } }
     end
 
     assert_redirected_to post_url(Post.last)
@@ -34,7 +35,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update post" do
-    patch post_url(@post), params: { post: { body: @post.body, title: @post.title, user_id: @post.user_id } }
+    patch post_url(@post), params: { post: { body: @post.body, title: @post.title } }
     assert_redirected_to post_url(@post)
   end
 
@@ -44,5 +45,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to posts_url
+  end
+
+  test "should filter posts by group" do
+    get posts_url, params: { group_id: groups(:one).id }
+    assert_response :success
+    assert_select "h2", /MyString/
+  end
+
+  test "should search posts by keyword" do
+    get posts_url, params: { query: "MyString" }
+    assert_response :success
+    assert_select "h2", /MyString/
   end
 end

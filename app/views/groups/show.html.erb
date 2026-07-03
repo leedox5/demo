@@ -1,0 +1,29 @@
+<% content_for :title, @group.name %>
+
+<div class="w-full">
+  <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 class="text-3xl font-semibold text-gray-900"><%= @group.name %></h1>
+      <p class="mt-1 text-sm text-gray-500"><%= @group.description.presence || "그룹 설명이 없습니다." %></p>
+    </div>
+    <div class="flex gap-2">
+      <%= link_to "목록으로", groups_path, class: "rounded-md bg-gray-100 px-3.5 py-2.5 text-gray-700" %>
+      <%= link_to "새 항목 추가", new_post_path, class: "rounded-md bg-blue-600 px-3.5 py-2.5 text-white" %>
+    </div>
+  </div>
+
+  <% if @posts.any? %>
+    <div class="space-y-4">
+      <% @posts.each do |post| %>
+        <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
+          <h2 class="text-lg font-semibold text-gray-900"><%= link_to post.title, post_path(post), class: "hover:text-blue-600" %></h2>
+          <p class="mt-2 text-sm text-gray-600"><%= truncate(post.body, length: 140) %></p>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="rounded-2xl border border-dashed border-gray-300 bg-white p-8 text-center text-gray-500">
+      이 그룹에는 아직 항목이 없습니다.
+    </div>
+  <% end %>
+</div>

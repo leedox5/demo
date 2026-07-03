@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_03_101731) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_03_142800) do
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "commentable_id", null: false
@@ -22,13 +22,24 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_101731) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
+    t.integer "group_id"
     t.string "title"
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "views_count"
+    t.index ["group_id"], name: "index_posts_on_group_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -45,5 +56,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_03_101731) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "groups", "users"
+  add_foreign_key "posts", "groups"
   add_foreign_key "posts", "users"
 end

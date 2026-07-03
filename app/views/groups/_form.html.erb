@@ -1,0 +1,26 @@
+<%= form_with(model: group, class: "space-y-4") do |form| %>
+  <% if group.errors.any? %>
+    <div class="rounded-md bg-red-50 p-3 text-sm text-red-700">
+      <ul class="list-disc pl-5">
+        <% group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, "그룹명", class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :name, class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2" %>
+  </div>
+
+  <div>
+    <%= form.label :description, "설명", class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_area :description, rows: 4, class: "mt-1 block w-full rounded-md border border-gray-300 px-3 py-2" %>
+  </div>
+
+  <div class="flex gap-2">
+    <%= form.submit "저장", class: "rounded-md bg-blue-600 px-4 py-2 text-white" %>
+    <%= link_to "취소", groups_path, class: "rounded-md bg-gray-100 px-4 py-2 text-gray-700" %>
+  </div>
+<% end %>

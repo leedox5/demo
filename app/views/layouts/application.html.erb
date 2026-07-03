@@ -43,6 +43,7 @@
         <div class="hidden items-center gap-4 text-sm font-medium text-gray-700 md:flex">
           <%= link_to "Home", root_path, class: "hover:text-blue-600" %>
           <%= link_to "Posts", posts_path, class: "hover:text-blue-600" %>
+          <%= link_to "Groups", groups_path, class: "hover:text-blue-600" %>
           <%= link_to "CSS", css_path, class: "hover:text-blue-600" %>
           <% if user_signed_in? %>
             <span class="text-gray-500"><%= current_user.email %></span>
@@ -58,6 +59,7 @@
         <div class="flex flex-col gap-2 text-sm font-medium text-gray-700" data-action="click->mobile-menu#close">
           <%= link_to "Home", root_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <%= link_to "Posts", posts_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
+          <%= link_to "Groups", groups_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <%= link_to "CSS", css_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <% if user_signed_in? %>
             <span class="rounded px-2 py-1 text-gray-500"><%= current_user.email %></span>

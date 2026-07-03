@@ -1,0 +1,9 @@
+one:
+  user: one
+  name: English
+  description: Core vocabulary
+
+two:
+  user: two
+  name: Tech Terms
+  description: Software vocabulary
