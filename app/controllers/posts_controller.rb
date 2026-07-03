@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @post.increment!(:views_count)
     @comments = @post.comments.includes(:user, comments: :user).order(created_at: :asc)
     @comment = Comment.new(commentable: @post)
   end

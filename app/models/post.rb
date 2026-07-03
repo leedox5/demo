@@ -4,4 +4,8 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+
+  def views_count_for_display
+    views_count || 0
+  end
 end
