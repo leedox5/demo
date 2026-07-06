@@ -45,7 +45,7 @@
               <%= link_to post_path(post), class: "block text-lg font-semibold text-slate-900 hover:text-blue-600" do %>
                 <%= truncate(post.title, length: 50) %>
               <% end %>
-              <p class="mt-2 text-sm text-slate-500"><%= post.user.email %> · 댓글 <%= post.comments.count %></p>
+              <p class="mt-2 text-sm text-slate-500"><%= post.user.display_name %> · 댓글 <%= post.comments.count %></p>
               <p class="mt-3 text-sm leading-6 text-slate-600"><%= truncate(post.body, length: 90) %></p>
             </div>
           <% end %>

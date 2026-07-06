@@ -1,7 +1,7 @@
 <div class="rounded-xl border border-gray-200 bg-gray-50 p-4">
   <div class="flex items-start justify-between gap-4">
     <div>
-      <p class="text-sm font-semibold"><%= comment.user.email %></p>
+      <p class="text-sm font-semibold"><%= comment.user.display_name %></p>
       <p class="text-xs text-gray-500"><%= l(comment.created_at, format: :short) %></p>
     </div>
     <% if user_signed_in? && comment.user == current_user %>

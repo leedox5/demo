@@ -6,12 +6,17 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div>
-        <%= f.label :email, class: "mb-1 block text-sm font-medium text-gray-700" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none ring-0 focus:border-blue-500" %>
+        <%= f.label :name, "이름", class: "mb-1 block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", required: true, class: "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none ring-0 focus:border-blue-500" %>
       </div>
 
       <div>
-        <%= f.label :password, class: "mb-1 block text-sm font-medium text-gray-700" %>
+        <%= f.label :email, "이메일", class: "mb-1 block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email, autocomplete: "email", class: "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none ring-0 focus:border-blue-500" %>
+      </div>
+
+      <div>
+        <%= f.label :password, "비밀번호", class: "mb-1 block text-sm font-medium text-gray-700" %>
         <% if @minimum_password_length %>
           <p class="mb-2 text-xs text-gray-500">최소 <%= @minimum_password_length %>자 이상</p>
         <% end %>
@@ -19,7 +24,7 @@
       </div>
 
       <div>
-        <%= f.label :password_confirmation, class: "mb-1 block text-sm font-medium text-gray-700" %>
+        <%= f.label :password_confirmation, "비밀번호 확인", class: "mb-1 block text-sm font-medium text-gray-700" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full rounded-lg border border-gray-300 px-3 py-2 text-sm outline-none focus:border-blue-500" %>
       </div>
 
