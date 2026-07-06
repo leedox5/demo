@@ -1,4 +1,4 @@
-<% content_for :title, "Showing post" %>
+<% content_for :title, "항목 상세" %>
 
 <div class="md:w-2/3 w-full">
   <% if notice.present? %>
@@ -24,9 +24,9 @@
   <%= render @post %>
 
   <div class="flex flex-col sm:flex-row gap-2 mt-6">
-    <%= link_to "Edit this post", edit_post_path(@post), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-    <%= link_to "Back to posts", posts_path, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-    <%= button_to "Destroy this post", @post, method: :delete, form_class: "sm:inline-block", class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "Are you sure?" } %>
+    <%= link_to "항목 수정", edit_post_path(@post), class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+    <%= link_to "항목 목록으로", posts_path, class: "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+    <%= button_to "항목 삭제", @post, method: :delete, form_class: "sm:inline-block", class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "정말 삭제할까요?" } %>
   </div>
 </div>
 

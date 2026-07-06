@@ -3,9 +3,9 @@
     <section class="rounded-[1.5rem] bg-white p-6 shadow-sm ring-1 ring-slate-200">
       <div class="grid gap-6 lg:grid-cols-[1.3fr_1fr] lg:items-center">
         <div class="space-y-6">
-          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600">커뮤니티 시작하기</p>
+          <p class="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600">학습 기록 시작하기</p>
           <div class="space-y-4">
-            <h1 class="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">Rails 기반 커뮤니티를 빠르게 경험해보세요</h1>
+            <h1 class="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl">나만의 단어/용어장을 빠르게 만들어보세요</h1>
             <p class="text-base leading-7 text-slate-600">단어/용어를 저장하고, 그룹으로 정리하며, 메모와 댓글로 이어가는 MVP 흐름을 바로 사용해보세요.</p>
           </div>
           <div class="flex flex-wrap gap-3">
@@ -32,8 +32,8 @@
     <section class="mt-8">
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 class="text-2xl font-semibold text-slate-900">최근 게시글</h2>
-          <p class="mt-1 text-sm text-slate-500">최신 글을 바로 확인하세요.</p>
+          <h2 class="text-2xl font-semibold text-slate-900">최근 학습 항목</h2>
+          <p class="mt-1 text-sm text-slate-500">최근 저장한 단어와 용어를 확인하세요.</p>
         </div>
         <%= link_to "전체 보기", posts_path, class: "text-sm font-semibold text-blue-600 hover:text-blue-500" %>
       </div>
@@ -51,8 +51,8 @@
           <% end %>
         <% else %>
           <div class="rounded-[1.5rem] border border-dashed border-slate-300 bg-white p-6 text-center text-slate-500">
-            아직 게시글이 없습니다.<br>
-            <%= link_to "새 글을 작성해보세요", new_post_path, class: "text-blue-600 hover:text-blue-500" %>
+            아직 저장된 항목이 없습니다.<br>
+            <%= link_to "첫 항목을 추가해보세요", new_post_path, class: "text-blue-600 hover:text-blue-500" %>
           </div>
         <% end %>
       </div>
