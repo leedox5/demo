@@ -45,7 +45,7 @@
           <%= link_to "항목", posts_path, class: "hover:text-blue-600" %>
           <%= link_to "그룹", groups_path, class: "hover:text-blue-600" %>
           <% if user_signed_in? %>
-            <span class="text-gray-500"><%= current_user.email %></span>
+            <%= link_to current_user.display_name, edit_user_registration_path, class: "text-gray-500 hover:text-blue-600" %>
             <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "hover:text-blue-600" %>
           <% else %>
             <%= link_to "로그인", new_user_session_path, class: "hover:text-blue-600" %>
@@ -60,7 +60,7 @@
           <%= link_to "항목", posts_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <%= link_to "그룹", groups_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <% if user_signed_in? %>
-            <span class="rounded px-2 py-1 text-gray-500"><%= current_user.email %></span>
+            <%= link_to current_user.display_name, edit_user_registration_path, class: "rounded px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-blue-600" %>
             <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "rounded px-2 py-1 text-left hover:bg-gray-100 hover:text-blue-600" %>
           <% else %>
             <%= link_to "로그인", new_user_session_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
