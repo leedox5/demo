@@ -77,7 +77,8 @@
       <div class="mx-auto mt-2 max-w-6xl rounded bg-red-100 px-4 py-3 text-sm text-red-800"><%= alert %></div>
     <% end %>
 
-    <main class="mx-auto max-w-6xl px-6 pb-10">
+    <% main_top_padding = content_for?(:main_top_padding) ? yield(:main_top_padding) : "pt-5" %>
+    <main class="mx-auto max-w-6xl px-6 <%= main_top_padding %> pb-10">
       <%= yield %>
     </main>
   </body>
