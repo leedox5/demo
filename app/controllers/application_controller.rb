@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def require_admin!
+    authenticate_user!
+    return if performed?
+    return if current_user.is_admin?
+
+    redirect_to root_path, alert: "관리자만 접근할 수 있습니다."
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :name ])
     devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])
