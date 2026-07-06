@@ -44,7 +44,6 @@
           <%= link_to "홈", root_path, class: "hover:text-blue-600" %>
           <%= link_to "항목", posts_path, class: "hover:text-blue-600" %>
           <%= link_to "그룹", groups_path, class: "hover:text-blue-600" %>
-          <%= link_to "CSS", css_path, class: "hover:text-blue-600" %>
           <% if user_signed_in? %>
             <span class="text-gray-500"><%= current_user.email %></span>
             <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "hover:text-blue-600" %>
@@ -60,7 +59,6 @@
           <%= link_to "홈", root_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <%= link_to "항목", posts_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <%= link_to "그룹", groups_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
-          <%= link_to "CSS", css_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
           <% if user_signed_in? %>
             <span class="rounded px-2 py-1 text-gray-500"><%= current_user.email %></span>
             <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "rounded px-2 py-1 text-left hover:bg-gray-100 hover:text-blue-600" %>
