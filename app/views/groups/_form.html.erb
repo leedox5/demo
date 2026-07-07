@@ -1,0 +1,27 @@
+<%= form_with(model: group, class: "space-y-5") do |form| %>
+  <% if group.errors.any? %>
+    <div class="rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+      <p class="font-bold"><%= pluralize(group.errors.count, "개") %> 그룹을 저장할 수 없습니다.</p>
+      <ul class="mt-2 list-disc pl-5">
+        <% group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, "그룹명", class: "text-sm font-bold text-[color:var(--nd-muted)]" %>
+    <%= form.text_field :name, placeholder: "영어 표현", class: ["mt-2 block w-full rounded-md border bg-white px-4 py-3 text-base font-semibold text-[color:var(--nd-ink)] outline-none placeholder:text-[color:var(--nd-muted)] focus:ring-2 focus:ring-[color:var(--nd-accent)]", { "border-[color:var(--nd-line)]": group.errors[:name].none?, "border-amber-400": group.errors[:name].any? }] %>
+  </div>
+
+  <div>
+    <%= form.label :description, "설명", class: "text-sm font-bold text-[color:var(--nd-muted)]" %>
+    <%= form.text_area :description, rows: 5, placeholder: "이 그룹에 어떤 표현을 모을지 짧게 적어보세요.", class: "mt-2 block w-full rounded-md border border-[color:var(--nd-line)] bg-white px-4 py-3 text-base leading-7 text-[color:var(--nd-ink)] outline-none placeholder:text-[color:var(--nd-muted)] focus:ring-2 focus:ring-[color:var(--nd-accent)]" %>
+  </div>
+
+  <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end">
+    <%= link_to "취소", groups_path, class: "inline-flex h-10 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-4 text-sm font-bold text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-sidebar)]" %>
+    <%= form.submit "저장", class: "inline-flex h-10 cursor-pointer items-center justify-center rounded-md bg-[color:var(--nd-accent)] px-4 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]" %>
+  </div>
+<% end %>

@@ -1,0 +1,189 @@
+<% content_for :title, "표현 수정" %>
+<% content_for :main_top_padding, "pt-4 sm:pt-5" %>
+<% content_for :main_x_padding, "px-0 sm:px-6" %>
+
+<% edit_form_id = dom_id(@post, :edit_form) %>
+<% groups = current_user.groups.order(:name) %>
+
+<div class="overflow-hidden rounded-none border-y border-[color:var(--nd-line)] bg-[color:var(--nd-bg)] sm:rounded-xl sm:border">
+  <div class="grid min-h-[70vh] lg:grid-cols-[14rem_1fr] xl:grid-cols-[14rem_1fr_20rem]">
+    <aside class="hidden bg-[color:var(--nd-sidebar)] p-6 lg:flex lg:flex-col lg:gap-7">
+      <div>
+        <%= link_to "NoteDox", root_path, class: "nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]" %>
+        <p class="mt-1 text-xs text-[color:var(--nd-muted)]">Words & phrases archive</p>
+      </div>
+
+      <nav class="space-y-2 text-sm">
+        <%= link_to posts_path, class: "flex items-center gap-3 rounded-lg bg-[color:var(--nd-accent)] px-3 py-2.5 font-semibold text-white" do %>
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.75v10.5M6.75 7.5h7.5a3 3 0 013 3v7.5h-7.5a3 3 0 01-3-3v-7.5z" />
+          </svg>
+          모든 표현
+        <% end %>
+
+        <%= link_to @post, class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-surface)]" do %>
+          <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12 18 18.75 12 18.75 2.25 12 2.25 12z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          표현 보기
+        <% end %>
+
+        <%= link_to groups_path, class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-surface)]" do %>
+          <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 6.75h6.75l1.5 1.5h8.25v9a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6.75z" />
+          </svg>
+          그룹
+        <% end %>
+      </nav>
+
+      <section class="space-y-3">
+        <div class="flex items-center justify-between">
+          <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Groups</p>
+          <%= link_to new_group_path, class: "text-[color:var(--nd-muted)] hover:text-[color:var(--nd-accent)]", aria: { label: "그룹 추가" }, title: "그룹 추가" do %>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+            </svg>
+          <% end %>
+        </div>
+
+        <div class="space-y-2">
+          <% groups.limit(4).each do |group| %>
+            <%= link_to group_path(group), class: "flex items-center gap-3 rounded-md py-1.5 text-sm text-[color:var(--nd-ink)] hover:text-[color:var(--nd-accent)]" do %>
+              <span class="h-2 w-2 rounded-full <%= @post.group == group ? "bg-[color:var(--nd-accent)]" : "bg-[color:var(--nd-line)]" %>"></span>
+              <span><%= group.name %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+
+      <div class="mt-auto rounded-lg bg-[color:var(--nd-surface)]/70 p-4">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Editing</p>
+        <p class="mt-2 nd-heading text-lg leading-tight text-[color:var(--nd-ink)]">뜻을 더 정확하게 고치고, 기억 단서를 오늘의 언어로 다시 남겨요.</p>
+      </div>
+    </aside>
+
+    <%= form_with(model: @post, id: edit_form_id, class: "bg-[color:var(--nd-surface)] p-5 sm:p-6 lg:p-8") do |form| %>
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Words & phrases</p>
+          <h1 class="nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">표현 수정</h1>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <%= link_to posts_path, class: "inline-flex h-10 items-center gap-2 rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-3 text-sm font-semibold text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-sidebar)]" do %>
+            <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            목록으로
+          <% end %>
+
+          <%= form.button type: "submit", class: "inline-flex h-10 items-center gap-2 rounded-md bg-[color:var(--nd-accent)] px-4 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]" do %>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            저장
+          <% end %>
+        </div>
+      </div>
+
+      <div class="mt-6 flex flex-col gap-3 rounded-lg border border-[color:var(--nd-line)] bg-green-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-sm font-bold text-[color:var(--nd-ink)]">수정 중인 표현</p>
+          <p class="mt-1 text-xs text-[color:var(--nd-muted)]">
+            <%= @post.group&.name || "그룹 없음" %>
+            <span class="px-1 text-[color:var(--nd-line)]">·</span>
+            마지막 수정 <%= l(@post.updated_at, format: :short) %>
+          </p>
+        </div>
+        <span class="inline-flex w-fit items-center gap-2 rounded-md bg-amber-50 px-3 py-1.5 text-xs font-bold text-[color:var(--nd-ink)]">
+          <span class="h-2 w-2 rounded-full bg-[color:var(--nd-accent)]"></span>
+          저장 전 확인
+        </span>
+      </div>
+
+      <% if @post.errors.any? %>
+        <div id="error_explanation" class="mt-5 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-900">
+          <p class="font-bold"><%= pluralize(@post.errors.count, "개") %> 표현을 저장할 수 없습니다.</p>
+          <ul class="mt-2 list-disc pl-5">
+            <% @post.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mt-6 space-y-5">
+        <div class="grid gap-4 sm:grid-cols-[1fr_14rem]">
+          <div>
+            <%= form.label :title, "표현", class: "text-sm font-bold text-[color:var(--nd-muted)]" %>
+            <%= form.text_field :title, class: ["mt-2 block w-full rounded-md border bg-white px-4 py-3 nd-heading text-3xl font-semibold text-[color:var(--nd-ink)] outline-none focus:ring-2 focus:ring-[color:var(--nd-accent)]", { "border-[color:var(--nd-accent)]": @post.errors[:title].none?, "border-amber-400": @post.errors[:title].any? }] %>
+          </div>
+
+          <div>
+            <%= form.label :group_id, "group", class: "text-sm font-bold text-[color:var(--nd-muted)]" %>
+            <%= form.collection_select :group_id, groups, :id, :name, { include_blank: "그룹 없음" }, class: ["mt-2 block w-full rounded-md border bg-white px-4 py-3 text-sm font-semibold text-[color:var(--nd-ink)] outline-none focus:ring-2 focus:ring-[color:var(--nd-accent)]", { "border-[color:var(--nd-line)]": @post.errors[:group_id].none?, "border-amber-400": @post.errors[:group_id].any? }] %>
+          </div>
+        </div>
+
+        <div>
+          <%= form.label :body, "memo / notes", class: "text-sm font-bold text-[color:var(--nd-muted)]" %>
+          <%= form.textarea :body, rows: 12, placeholder: "뜻, 예문, 출처, 기억 단서를 한곳에 남겨보세요.", class: ["mt-2 block w-full rounded-md border bg-white px-4 py-3 text-base leading-7 text-[color:var(--nd-ink)] outline-none placeholder:text-[color:var(--nd-muted)] focus:ring-2 focus:ring-[color:var(--nd-accent)]", { "border-[color:var(--nd-line)]": @post.errors[:body].none?, "border-amber-400": @post.errors[:body].any? }] %>
+          <p class="mt-2 text-xs text-[color:var(--nd-muted)]">정의, 내 문장, 출처를 함께 적어두면 나중에 더 잘 검색됩니다.</p>
+        </div>
+      </div>
+    <% end %>
+
+    <aside class="border-t border-[color:var(--nd-line)] bg-[#FBF8ED] p-5 sm:p-6 xl:border-l xl:border-t-0">
+      <div class="flex items-center justify-between">
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Preview</p>
+        <svg class="h-5 w-5 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12 18 18.75 12 18.75 2.25 12 2.25 12z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="nd-heading text-4xl font-semibold leading-tight text-[color:var(--nd-ink)]"><%= @post.title.presence || "제목 없음" %></h2>
+        <p class="mt-3 whitespace-pre-line text-sm leading-6 text-[color:var(--nd-ink)]"><%= truncate(@post.body.to_s, length: 180) %></p>
+      </div>
+
+      <dl class="mt-6 space-y-3 text-sm">
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">group</dt>
+          <dd class="text-[color:var(--nd-ink)]"><%= @post.group&.name || "그룹 없음" %></dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">notes</dt>
+          <dd class="text-[color:var(--nd-ink)]"><%= @post.comments.count %>개 메모</dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">updated</dt>
+          <dd class="text-[color:var(--nd-ink)]"><%= l(@post.updated_at, format: :short) %></dd>
+        </div>
+      </dl>
+
+      <div class="mt-6 rounded-lg bg-[#EED9A8] p-4">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Memo cue</p>
+        <p class="mt-2 text-sm leading-6 text-[color:var(--nd-ink)]">저장하면 표현 목록과 상세 화면의 노트 맥락에 바로 반영됩니다.</p>
+      </div>
+
+      <div class="mt-6 space-y-3">
+        <%= link_to @post, class: "inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-sm font-bold text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-sidebar)]" do %>
+          <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12 18 18.75 12 18.75 2.25 12 2.25 12z" />
+          </svg>
+          표현 보기
+        <% end %>
+
+        <%= link_to @post, data: { turbo_method: :delete, turbo_confirm: "정말 삭제할까요?" }, class: "inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-red-600 bg-red-50 text-sm font-bold text-red-700 hover:bg-red-600 hover:text-white" do %>
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12m-9 0V5h6v2m-7 0l1 12h4l1-12" />
+          </svg>
+          표현 삭제
+        <% end %>
+      </div>
+    </aside>
+  </div>
+</div>

@@ -4,4 +4,21 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def require_admin!
+    authenticate_user!
+    return if performed?
+    return if current_user.is_admin?
+
+    redirect_to root_path, alert: "관리자만 접근할 수 있습니다."
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])
+  end
 end
