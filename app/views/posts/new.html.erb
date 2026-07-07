@@ -1,4 +1,4 @@
-<% content_for :title, "새 항목" %>
+<% content_for :title, "새 표현" %>
 <% content_for :main_top_padding, "pt-4 sm:pt-5" %>
 <% content_for :main_x_padding, "px-0 sm:px-6" %>
 
@@ -18,7 +18,7 @@
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.75v10.5M6.75 7.5h7.5a3 3 0 013 3v7.5h-7.5a3 3 0 01-3-3v-7.5z" />
           </svg>
-          모든 item
+          모든 표현
         <% end %>
 
         <%= link_to groups_path, class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-surface)]" do %>
@@ -55,7 +55,7 @@
               <% end %>
             <% end %>
           <% else %>
-            <p class="text-sm leading-6 text-[color:var(--nd-muted)]">그룹을 만들면 새 item을 주제별로 정리할 수 있어요.</p>
+            <p class="text-sm leading-6 text-[color:var(--nd-muted)]">그룹을 만들면 새 표현을 주제별로 정리할 수 있어요.</p>
           <% end %>
         </div>
       </section>
@@ -70,7 +70,7 @@
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Words & phrases</p>
-          <h1 class="nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">새 항목 추가</h1>
+          <h1 class="nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">새 표현 추가</h1>
         </div>
 
         <div class="flex items-center gap-2">
@@ -92,8 +92,8 @@
 
       <div class="mt-6 flex flex-col gap-3 rounded-lg border border-[color:var(--nd-line)] bg-green-50 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p class="text-sm font-bold text-[color:var(--nd-ink)]">새 item 작성 중</p>
-          <p class="mt-1 text-xs text-[color:var(--nd-muted)]">word / phrase, group, memo를 함께 남겨두면 나중에 검색하기 쉬워요.</p>
+          <p class="text-sm font-bold text-[color:var(--nd-ink)]">새 표현 작성 중</p>
+          <p class="mt-1 text-xs text-[color:var(--nd-muted)]">표현, group, memo를 함께 남겨두면 나중에 검색하기 쉬워요.</p>
         </div>
         <span class="inline-flex w-fit items-center gap-2 rounded-md bg-amber-50 px-3 py-1.5 text-xs font-bold text-[color:var(--nd-ink)]">
           <span class="h-2 w-2 rounded-full bg-[color:var(--nd-accent)]"></span>
@@ -103,7 +103,7 @@
 
       <% if @post.errors.any? %>
         <div id="error_explanation" class="mt-5 rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-medium text-amber-900">
-          <p class="font-bold"><%= pluralize(@post.errors.count, "개") %> 항목을 저장할 수 없습니다.</p>
+          <p class="font-bold"><%= pluralize(@post.errors.count, "개") %> 표현을 저장할 수 없습니다.</p>
           <ul class="mt-2 list-disc pl-5">
             <% @post.errors.each do |error| %>
               <li><%= error.full_message %></li>
@@ -115,7 +115,7 @@
       <div class="mt-6 space-y-5">
         <div class="grid gap-4 sm:grid-cols-[1fr_14rem]">
           <div>
-            <%= form.label :title, "word / phrase", class: "text-sm font-bold text-[color:var(--nd-muted)]" %>
+            <%= form.label :title, "표현", class: "text-sm font-bold text-[color:var(--nd-muted)]" %>
             <%= form.text_field :title, placeholder: "serendipity", class: ["mt-2 block w-full rounded-md border bg-white px-4 py-3 nd-heading text-3xl font-semibold text-[color:var(--nd-ink)] outline-none placeholder:text-[color:var(--nd-muted)] focus:ring-2 focus:ring-[color:var(--nd-accent)]", { "border-[color:var(--nd-accent)]": @post.errors[:title].none?, "border-amber-400": @post.errors[:title].any? }] %>
           </div>
 
@@ -143,7 +143,7 @@
       </div>
 
       <div class="mt-6">
-        <h2 class="nd-heading text-4xl font-semibold leading-tight text-[color:var(--nd-ink)]"><%= @post.title.presence || "새 word / phrase" %></h2>
+        <h2 class="nd-heading text-4xl font-semibold leading-tight text-[color:var(--nd-ink)]"><%= @post.title.presence || "새 표현" %></h2>
         <p class="mt-3 whitespace-pre-line text-sm leading-6 text-[color:var(--nd-ink)]"><%= @post.body.present? ? truncate(@post.body.to_s, length: 180) : "뜻, 예문, 출처, 기억 단서를 적으면 저장 후 상세 화면에서 바로 이어볼 수 있어요." %></p>
       </div>
 

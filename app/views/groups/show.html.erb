@@ -27,7 +27,7 @@
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
           </svg>
-          새 item
+          새 표현
         <% end %>
       </div>
     </div>
@@ -36,8 +36,8 @@
   <div class="grid gap-5 lg:grid-cols-[1fr_18rem]">
     <section class="space-y-4">
       <div class="flex items-center justify-between">
-        <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">그룹 안의 item</h2>
-        <span class="text-sm text-[color:var(--nd-muted)]"><%= @posts.size %>개 item</span>
+        <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">그룹 안의 표현</h2>
+        <span class="text-sm text-[color:var(--nd-muted)]"><%= @posts.size %>개 표현</span>
       </div>
 
       <% if @posts.any? %>
@@ -58,8 +58,8 @@
         </div>
       <% else %>
         <div class="rounded-xl border border-dashed border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-6 py-10 text-center">
-          <p class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">이 그룹에는 아직 item이 없습니다.</p>
-          <p class="mt-2 text-sm text-[color:var(--nd-muted)]">새 item을 만들고 이 그룹에 연결해보세요.</p>
+          <p class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">이 그룹에는 아직 표현이 없습니다.</p>
+          <p class="mt-2 text-sm text-[color:var(--nd-muted)]">새 표현을 만들고 이 그룹에 연결해보세요.</p>
         </div>
       <% end %>
     </section>
@@ -68,7 +68,7 @@
       <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Group summary</p>
       <dl class="mt-5 space-y-3 text-sm">
         <div class="flex items-center justify-between gap-3">
-          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">items</dt>
+          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">expressions</dt>
           <dd class="font-bold text-[color:var(--nd-ink)]"><%= @posts.size %></dd>
         </div>
         <div class="flex items-center justify-between gap-3">
@@ -83,10 +83,10 @@
 
       <div class="mt-6 rounded-lg bg-[#EED9A8] p-4">
         <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Safety</p>
-        <p class="mt-2 text-sm leading-6 text-[color:var(--nd-ink)]">그룹 삭제 시 연결된 item은 삭제되지 않고 그룹 없음으로 남습니다.</p>
+        <p class="mt-2 text-sm leading-6 text-[color:var(--nd-ink)]">그룹 삭제 시 연결된 표현은 삭제되지 않고 그룹 없음으로 남습니다.</p>
       </div>
 
-      <%= button_to group_path(@group), method: :delete, form_class: "mt-6", class: "inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-red-600 bg-red-50 text-sm font-bold text-red-700 hover:bg-red-600 hover:text-white", data: { turbo_confirm: "그룹을 삭제할까요? 연결된 item은 삭제되지 않고 그룹 없음으로 남습니다." } do %>
+      <%= button_to group_path(@group), method: :delete, form_class: "mt-6", class: "inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-red-600 bg-red-50 text-sm font-bold text-red-700 hover:bg-red-600 hover:text-white", data: { turbo_confirm: "그룹을 삭제할까요? 연결된 표현은 삭제되지 않고 그룹 없음으로 남습니다." } do %>
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12m-9 0V5h6v2m-7 0l1 12h4l1-12" />
         </svg>

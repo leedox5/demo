@@ -16,12 +16,12 @@
               <h1 class="nd-heading mt-1 text-4xl font-semibold text-[color:var(--nd-ink)] sm:text-5xl">NoteDox</h1>
             </div>
             <div class="flex gap-2">
-              <%= link_to new_post_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-white hover:bg-[color:var(--nd-accent-strong)]", aria: { label: "새 항목 추가" }, title: "새 항목 추가" do %>
+              <%= link_to new_post_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-white hover:bg-[color:var(--nd-accent-strong)]", aria: { label: "새 표현 추가" }, title: "새 표현 추가" do %>
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
                 </svg>
               <% end %>
-              <%= link_to posts_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-[color:var(--nd-muted)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]", aria: { label: "항목 목록 보기" }, title: "항목 목록 보기" do %>
+              <%= link_to posts_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-[color:var(--nd-muted)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]", aria: { label: "표현 목록 보기" }, title: "표현 목록 보기" do %>
                 <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
                 </svg>
@@ -31,7 +31,7 @@
 
           <p class="mt-4 text-base leading-7 text-[color:var(--nd-muted)]">
             NoteDox는 단어, 표현, 용어를 기록하고 다시 찾아보는 개인 학습 아카이브입니다.
-            오늘의 word/phrase를 item으로 저장하고 memo를 남겨 나만의 맥락을 쌓아보세요.
+            오늘의 단어와 표현을 저장하고 memo를 남겨 나만의 맥락을 쌓아보세요.
           </p>
 
           <div class="mt-5 grid gap-2 sm:grid-cols-3">
@@ -54,7 +54,7 @@
           <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-4">
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Notebook Ritual</p>
             <p class="nd-heading mt-2 text-2xl font-semibold text-[color:var(--nd-ink)]">Capture</p>
-            <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]">먼저 빠르게 item을 저장하고, 짧은 메모로 그 순간의 의미를 붙잡아 두세요.</p>
+            <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]">먼저 빠르게 표현을 저장하고, 짧은 메모로 그 순간의 의미를 붙잡아 두세요.</p>
           </div>
           <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-sidebar)]/70 p-4">
             <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Notebook Ritual</p>
@@ -69,7 +69,7 @@
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Archive Feed</p>
-          <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">최근 학습 항목</h2>
+          <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">최근 학습 표현</h2>
         </div>
         <%= link_to "전체 보기", posts_path, class: "text-sm font-semibold text-[color:var(--nd-accent)] hover:text-[color:var(--nd-accent-strong)]" %>
       </div>
@@ -90,8 +90,8 @@
           <% end %>
         <% else %>
           <div class="rounded-xl border border-dashed border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-6 text-center text-[color:var(--nd-muted)] md:col-span-2 xl:col-span-3">
-            아직 저장된 item이 없습니다.<br>
-            <%= link_to "첫 item을 NoteDox에 남겨보세요", new_post_path, class: "font-medium text-[color:var(--nd-accent)] hover:text-[color:var(--nd-accent-strong)]" %>
+            아직 저장된 표현이 없습니다.<br>
+            <%= link_to "첫 표현을 NoteDox에 남겨보세요", new_post_path, class: "font-medium text-[color:var(--nd-accent)] hover:text-[color:var(--nd-accent-strong)]" %>
           </div>
         <% end %>
       </div>
