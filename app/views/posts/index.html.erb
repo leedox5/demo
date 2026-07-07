@@ -1,12 +1,12 @@
 <% content_for :title, "표현 목록" %>
 <% content_for :main_top_padding, "pt-4 sm:pt-5" %>
-<% content_for :main_x_padding, "px-0 sm:px-6" %>
+<% content_for :main_x_padding, "px-3 sm:px-6" %>
 
 <% selected_post = @posts.first %>
 <% total_comments = selected_post ? @posts.sum { |post| post.comments.count } : 0 %>
 
-<div class="overflow-hidden rounded-none border-y border-[color:var(--nd-line)] bg-[color:var(--nd-bg)] sm:rounded-xl sm:border">
-  <div class="grid min-h-[70vh] lg:grid-cols-[14rem_1fr] xl:grid-cols-[14rem_1fr_20rem]">
+<div class="min-w-0 overflow-hidden rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-bg)]">
+  <div class="grid min-w-0 min-h-[70vh] lg:grid-cols-[14rem_1fr] xl:grid-cols-[14rem_1fr_20rem]">
     <aside class="hidden bg-[color:var(--nd-sidebar)] p-6 lg:flex lg:flex-col lg:gap-7">
       <div>
         <%= link_to "NoteDox", root_path, class: "nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]" %>
@@ -69,41 +69,44 @@
       </div>
     </aside>
 
-    <section class="bg-[color:var(--nd-surface)] p-5 sm:p-6 lg:p-8">
+    <section class="min-w-0 bg-[color:var(--nd-surface)] pl-4 pr-5 pt-4 pb-4 sm:p-6 lg:p-8">
       <% if notice.present? %>
         <p class="mb-5 inline-block rounded-md bg-green-50 px-3 py-2 font-medium text-green-500" id="notice"><%= notice %></p>
       <% end %>
 
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
+      <div class="flex items-start justify-between gap-2 sm:items-center sm:gap-3">
+        <div class="min-w-0 max-w-2xl flex-1">
           <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">NoteDox</p>
-          <h1 class="nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">Notes archive</h1>
-          <p class="mt-1 text-sm text-[color:var(--nd-muted)]">오늘 만난 단어, 표현, 예문을 저장하고 memo로 이어서 학습해요.</p>
+          <h1 class="nd-heading text-[2.05rem] leading-tight font-semibold text-[color:var(--nd-ink)] sm:text-4xl">Notes archive</h1>
+          <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]">오늘 만난 단어, 표현, 예문을 저장하고 memo로 이어서 학습해요.</p>
         </div>
 
-        <%= link_to new_post_path, class: "inline-flex h-10 w-fit items-center gap-2 rounded-md bg-[color:var(--nd-accent)] px-4 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]" do %>
+        <%= link_to new_post_path, class: "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-white hover:bg-[color:var(--nd-accent-strong)]", aria: { label: "새 표현" }, title: "새 표현" do %>
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
           </svg>
-          새 표현
         <% end %>
       </div>
 
-      <div class="mt-6 rounded-lg border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-3">
-        <%= form_with url: posts_path, method: :get, class: "flex flex-col gap-2 sm:flex-row sm:items-center" do |form| %>
-          <div class="flex min-w-0 flex-1 items-center gap-2 rounded-md border border-[color:var(--nd-line)] bg-[#F7F8F4] px-3 py-2">
+      <div class="mt-6 rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-2 sm:p-3">
+        <%= form_with url: posts_path, method: :get, class: "flex min-w-0 items-center gap-1.5 sm:gap-2" do |form| %>
+          <div class="flex min-w-0 flex-1 items-center gap-1.5 rounded-md border border-[color:var(--nd-line)] bg-[#F7F8F4] px-2.5 py-2 sm:gap-2 sm:px-3">
             <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m1.6-5.4a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <%= form.text_field :query, value: params[:query], placeholder: "표현 또는 memo 검색", class: "min-w-0 flex-1 bg-transparent text-sm text-[color:var(--nd-ink)] outline-none placeholder:text-[color:var(--nd-muted)]" %>
           </div>
 
-          <%= form.select :group_id, options_from_collection_for_select(@groups, :id, :name, params[:group_id]), { include_blank: "전체 그룹" }, class: "rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-3 py-2 text-sm text-[color:var(--nd-ink)] outline-none focus:ring-2 focus:ring-[color:var(--nd-accent)] sm:w-40" %>
-          <%= form.submit "검색", class: "rounded-md bg-[color:var(--nd-accent)] px-4 py-2 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]" %>
+          <%= form.select :group_id, options_from_collection_for_select(@groups, :id, :name, params[:group_id]), { include_blank: "전체 그룹" }, class: "h-10 w-[5.8rem] shrink-0 rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-1.5 text-sm text-[color:var(--nd-ink)] outline-none focus:ring-2 focus:ring-[color:var(--nd-accent)] sm:w-40 sm:px-3" %>
+          <%= form.button type: "submit", class: "inline-flex h-10 w-9 shrink-0 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)] sm:w-10", aria: { label: "검색" }, title: "검색" do %>
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m1.6-5.4a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          <% end %>
         <% end %>
       </div>
 
-      <div class="mt-6 grid gap-3 sm:grid-cols-3">
+      <div class="mt-6 grid gap-2.5 sm:grid-cols-3 sm:gap-3">
         <div class="rounded-lg border border-[color:var(--nd-line)] bg-green-50 px-4 py-3">
           <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Expressions</p>
           <p class="mt-1 nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]"><%= @posts.size %></p>
@@ -118,7 +121,7 @@
         </div>
       </div>
 
-      <div id="posts" class="mt-6 space-y-3">
+      <div id="posts" class="mt-6 space-y-3.5">
         <% if @posts.any? %>
           <div class="flex items-center justify-between text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">
             <span>표현 목록</span>
@@ -126,7 +129,7 @@
           </div>
 
           <% @posts.each do |post| %>
-            <article class="rounded-lg border <%= post == selected_post ? "border-[color:var(--nd-accent)] bg-[#F7FBF2]" : "border-[color:var(--nd-line)] bg-white" %> px-5 py-4 transition hover:border-[color:var(--nd-accent)]/50">
+            <article class="rounded-xl border <%= post == selected_post ? "border-[color:var(--nd-accent)] bg-[#F7FBF2]" : "border-[color:var(--nd-line)] bg-white" %> px-4 py-4 transition hover:border-[color:var(--nd-accent)]/50 sm:px-5">
               <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div class="min-w-0">
                   <h2 class="nd-heading text-2xl font-semibold leading-tight text-[color:var(--nd-ink)]">
@@ -168,7 +171,7 @@
       </div>
     </section>
 
-    <aside class="border-t border-[color:var(--nd-line)] bg-[#FBF8ED] p-5 sm:p-6 xl:border-l xl:border-t-0">
+    <aside class="min-w-0 border-t border-[color:var(--nd-line)] bg-[#FBF8ED] p-5 sm:p-6 xl:border-l xl:border-t-0">
       <% if selected_post %>
         <div class="flex items-center justify-between">
           <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Selected expression</p>
