@@ -1,1 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap");
 @import "tailwindcss";
+
+@layer base {
+	:root {
+		--nd-bg: #f4f0e6;
+		--nd-surface: #fffdf8;
+		--nd-sidebar: #e7ded0;
+		--nd-ink: #2e251c;
+		--nd-muted: #7a6a59;
+		--nd-line: #d2c4b4;
+		--nd-accent: #8b5a2b;
+		--nd-accent-strong: #754b23;
+	}
+
+	body {
+		background-color: var(--nd-bg);
+		color: var(--nd-ink);
+		font-family: "Noto Sans KR", sans-serif;
+	}
+
+	h1,
+	h2,
+	h3,
+	.nd-heading {
+		font-family: "Playfair Display", serif;
+		letter-spacing: -0.01em;
+	}
+}

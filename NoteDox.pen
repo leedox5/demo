@@ -1,0 +1,2272 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": -605,
+      "y": 16,
+      "name": "NoteDox - Notes Archive",
+      "clip": true,
+      "width": 1440,
+      "height": 960,
+      "fill": "$lexi-bg",
+      "children": [
+        {
+          "type": "frame",
+          "id": "zAps0",
+          "name": "Sidebar",
+          "width": 248,
+          "height": "fill_container",
+          "fill": "$lexi-sidebar",
+          "layout": "vertical",
+          "gap": 28,
+          "padding": [
+            32,
+            24
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "Zt546",
+              "name": "Brand",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rEonr",
+                  "name": "Brand Name",
+                  "fill": "$lexi-ink",
+                  "content": "NoteDox",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 34,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "T8vJje",
+                  "name": "Brand Subtext",
+                  "fill": "$lexi-muted",
+                  "content": "Leedox notes archive",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "JzERi",
+              "name": "Primary Navigation",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Jlocf",
+                  "name": "Nav - 모든 item",
+                  "width": "fill_container",
+                  "height": 42,
+                  "fill": "$lexi-accent",
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "EiMVV",
+                      "name": "Icon - 모든 item",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "book-open",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jsb6W",
+                      "name": "Label - 모든 item",
+                      "fill": "#FFFFFF",
+                      "content": "모든 item",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gk3Jy",
+                  "name": "Nav - 최근 memo",
+                  "width": "fill_container",
+                  "height": 42,
+                  "fill": "#00000000",
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "jmuv5",
+                      "name": "Icon - 최근 memo",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "sticky-note",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Y0RS2",
+                      "name": "Label - 최근 memo",
+                      "fill": "$lexi-ink",
+                      "content": "최근 memo",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mKFsK",
+                  "name": "Nav - 복습 예정",
+                  "width": "fill_container",
+                  "height": 42,
+                  "fill": "#00000000",
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "CvlIQ",
+                      "name": "Icon - 복습 예정",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "calendar-clock",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uetR9",
+                      "name": "Label - 복습 예정",
+                      "fill": "$lexi-ink",
+                      "content": "복습 예정",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "R0V9UQ",
+                  "name": "Nav - 보관함",
+                  "width": "fill_container",
+                  "height": 42,
+                  "fill": "#00000000",
+                  "cornerRadius": 8,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "X458M",
+                      "name": "Icon - 보관함",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "archive",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "eBWln",
+                      "name": "Label - 보관함",
+                      "fill": "$lexi-ink",
+                      "content": "보관함",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YlXcn",
+              "name": "Group List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fcKPL",
+                  "name": "Group Header",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "an1yQ",
+                      "name": "Group Title",
+                      "fill": "$lexi-muted",
+                      "content": "GROUPS",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "r0Xvk",
+                      "name": "Add Group Icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "$lexi-accent"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "r7Muc",
+                  "name": "Group - 영어 표현",
+                  "width": "fill_container",
+                  "height": 34,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "WTbN2",
+                      "name": "Dot - 영어 표현",
+                      "fill": "$lexi-accent",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "icBbm",
+                      "name": "Group Label - 영어 표현",
+                      "fill": "$lexi-ink",
+                      "content": "영어 표현",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KLcy4",
+                      "name": "Group Count - 영어 표현",
+                      "fill": "$lexi-muted",
+                      "content": "38",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ca0qK",
+                  "name": "Group - 기술 용어",
+                  "width": "fill_container",
+                  "height": 34,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "FtLme",
+                      "name": "Dot - 기술 용어",
+                      "fill": "#80673A",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "TcmEE",
+                      "name": "Group Label - 기술 용어",
+                      "fill": "$lexi-ink",
+                      "content": "기술 용어",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CVWsQ",
+                      "name": "Group Count - 기술 용어",
+                      "fill": "$lexi-muted",
+                      "content": "21",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "KBPhQ",
+                  "name": "Group - 책에서 만난 말",
+                  "width": "fill_container",
+                  "height": 34,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "PCJsx",
+                      "name": "Dot - 책에서 만난 말",
+                      "fill": "#8A6FA8",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "yV7AV",
+                      "name": "Group Label - 책에서 만난 말",
+                      "fill": "$lexi-ink",
+                      "content": "책에서 만난 말",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rSNW2",
+                      "name": "Group Count - 책에서 만난 말",
+                      "fill": "$lexi-muted",
+                      "content": "14",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "noTGM",
+                  "name": "Group - 일본어",
+                  "width": "fill_container",
+                  "height": 34,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "x3eG32",
+                      "name": "Dot - 일본어",
+                      "fill": "#3A6F80",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "Iqga5",
+                      "name": "Group Label - 일본어",
+                      "fill": "$lexi-ink",
+                      "content": "일본어",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LyoId",
+                      "name": "Group Count - 일본어",
+                      "fill": "$lexi-muted",
+                      "content": "9",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "derhJ",
+              "name": "Daily Cue",
+              "width": "fill_container",
+              "fill": "$lexi-warm",
+              "cornerRadius": 8,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ggOda",
+                  "name": "Cue Label",
+                  "fill": "$lexi-muted",
+                  "content": "TODAY",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "tdLW6",
+                  "name": "Cue Text",
+                  "fill": "$lexi-ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "낯선 표현을 오래 남기는 가장 좋은 방법은, 내 문장으로 다시 적어보는 것.",
+                  "lineHeight": 1.15,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Lnywh",
+          "name": "Main Workspace",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$lexi-surface",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            34,
+            36
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "oDkVL",
+              "name": "Top Bar",
+              "width": "fill_container",
+              "height": 84,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hZT8R",
+                  "name": "Page Title Block",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ozns5",
+                      "name": "Page Title",
+                      "fill": "$lexi-ink",
+                      "content": "Notes archive",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 38,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "x6oCqE",
+                      "name": "Page Description",
+                      "fill": "$lexi-muted",
+                      "content": "오늘 만난 단어, 표현, 예문을 NoteDox에 정리해 오래 남겨요.",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "i92DFg",
+                  "name": "Top Actions",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "xIO7b",
+                      "name": "Import Button",
+                      "height": 40,
+                      "cornerRadius": 8,
+                      "stroke": "$lexi-line",
+                      "strokeWidth": 1,
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "l7hs8d",
+                          "name": "Import Icon",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "upload",
+                          "library": "lucide",
+                          "fill": "$lexi-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "UIAW1",
+                          "name": "Import Label",
+                          "fill": "$lexi-ink",
+                          "content": "가져오기",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "O95JsR",
+                      "name": "New Item Button",
+                      "height": 42,
+                      "fill": "$lexi-accent",
+                      "cornerRadius": 8,
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        18
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "H88P4A",
+                          "name": "New Item Icon",
+                          "width": 17,
+                          "height": 17,
+                          "icon": "plus",
+                          "library": "lucide",
+                          "fill": "#FFFFFF"
+                        },
+                        {
+                          "type": "text",
+                          "id": "o4dD5",
+                          "name": "New Item Label",
+                          "fill": "#FFFFFF",
+                          "content": "새 item",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "pCrMk",
+              "name": "Search And Filters",
+              "width": "fill_container",
+              "height": 54,
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tPXJD",
+                  "name": "Search Field",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#F7F8F4",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "gap": 10,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "X7f0v",
+                      "name": "Search Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "search",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UBrx3",
+                      "name": "Search Placeholder",
+                      "fill": "$lexi-muted",
+                      "content": "word, phrase, memo 검색",
+                      "fontFamily": "$font-body",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "m4cNrR",
+                  "name": "Filter - 전체 group",
+                  "height": 38,
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    13
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "V22r8E",
+                      "name": "Filter Label - 전체 group",
+                      "fill": "$lexi-ink",
+                      "content": "전체 group",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "oKFY7",
+                      "name": "Filter Chevron - 전체 group",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gn0nF",
+                  "name": "Filter - 최근 추가",
+                  "height": 38,
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    13
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "d8O3fp",
+                      "name": "Filter Label - 최근 추가",
+                      "fill": "$lexi-ink",
+                      "content": "최근 추가",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "k6cvU",
+                      "name": "Filter Chevron - 최근 추가",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PZdsZ",
+                  "name": "Filter - memo 있음",
+                  "height": 38,
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    13
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T0Rx2r",
+                      "name": "Filter Label - memo 있음",
+                      "fill": "$lexi-ink",
+                      "content": "memo 있음",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "LZ1FB",
+                      "name": "Filter Chevron - memo 있음",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rpTBs",
+              "name": "Notebook Summary",
+              "width": "fill_container",
+              "height": 96,
+              "fill": "#F1F5EC",
+              "cornerRadius": 8,
+              "stroke": "$lexi-line",
+              "strokeWidth": 1,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EizUA",
+                  "name": "Summary - 이번 주 item",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    18,
+                    22
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xw9Bk",
+                      "name": "Summary Value - 이번 주 item",
+                      "fill": "$lexi-ink",
+                      "content": "24",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 27,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "yZuIi",
+                      "name": "Summary Label - 이번 주 item",
+                      "fill": "$lexi-muted",
+                      "content": "이번 주 item",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "K5Cxn",
+                  "name": "Summary - 작성한 memo",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    18,
+                    22
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ougFk",
+                      "name": "Summary Value - 작성한 memo",
+                      "fill": "$lexi-ink",
+                      "content": "71",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 27,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "wc7WC",
+                      "name": "Summary Label - 작성한 memo",
+                      "fill": "$lexi-muted",
+                      "content": "작성한 memo",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ugdks",
+                  "name": "Summary - 복습 대기",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    18,
+                    22
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nLrf1",
+                      "name": "Summary Value - 복습 대기",
+                      "fill": "$lexi-ink",
+                      "content": "8",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 27,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "DoZ6w",
+                      "name": "Summary Label - 복습 대기",
+                      "fill": "$lexi-muted",
+                      "content": "복습 대기",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dYBr2",
+                  "name": "Summary - 활성 group",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "padding": [
+                    18,
+                    22
+                  ],
+                  "justifyContent": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "idaI4",
+                      "name": "Summary Value - 활성 group",
+                      "fill": "$lexi-ink",
+                      "content": "4",
+                      "fontFamily": "$font-mono",
+                      "fontSize": 27,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "p2Pm1",
+                      "name": "Summary Label - 활성 group",
+                      "fill": "$lexi-muted",
+                      "content": "활성 group",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "blYJD",
+              "name": "Item List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "L970g",
+                  "name": "List Header",
+                  "width": "fill_container",
+                  "height": 32,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "n1KVA",
+                      "name": "Item Column",
+                      "fill": "$lexi-muted",
+                      "content": "ITEM",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "F28DH",
+                  "name": "Item - serendipity",
+                  "width": "fill_container",
+                  "height": 86,
+                  "fill": "#F7FBF2",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-accent",
+                  "strokeWidth": 1,
+                  "gap": 18,
+                  "padding": [
+                    0,
+                    18
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FwuYo",
+                      "name": "Word Cell - serendipity",
+                      "width": 260,
+                      "layout": "vertical",
+                      "gap": 5,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "h2uayz",
+                          "name": "Term - serendipity",
+                          "fill": "$lexi-ink",
+                          "content": "serendipity",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 24,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "j6BDyl",
+                          "name": "Meaning - serendipity",
+                          "fill": "$lexi-muted",
+                          "content": "뜻밖의 발견",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "R151zf",
+                      "name": "Example - serendipity",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "I found this cafe by serendipity, and now it is my favorite study spot.",
+                      "lineHeight": 1.25,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "HVJMI",
+                      "name": "Group Badge - serendipity",
+                      "height": 28,
+                      "fill": "$lexi-accent",
+                      "cornerRadius": 8,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "iW3B5",
+                          "name": "Group Badge Label - serendipity",
+                          "fill": "#FFFFFF",
+                          "content": "영어 표현",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZlRQy",
+                  "name": "Item - affordance",
+                  "width": "fill_container",
+                  "height": 86,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "gap": 18,
+                  "padding": [
+                    0,
+                    18
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "A4daW",
+                      "name": "Word Cell - affordance",
+                      "width": 260,
+                      "layout": "vertical",
+                      "gap": 5,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uPevu",
+                          "name": "Term - affordance",
+                          "fill": "$lexi-ink",
+                          "content": "affordance",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 24,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CLmub",
+                          "name": "Meaning - affordance",
+                          "fill": "$lexi-muted",
+                          "content": "행동 가능성을 드러내는 단서",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "bXrbf",
+                      "name": "Example - affordance",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "좋은 버튼은 설명 없이도 누를 수 있다는 affordance를 가진다.",
+                      "lineHeight": 1.25,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iTcdB",
+                      "name": "Group Badge - affordance",
+                      "height": 28,
+                      "fill": "#EEF3EA",
+                      "cornerRadius": 8,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "PwUpj",
+                          "name": "Group Badge Label - affordance",
+                          "fill": "$lexi-ink",
+                          "content": "기술 용어",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XxToI",
+                  "name": "Item - 담담하다",
+                  "width": "fill_container",
+                  "height": 86,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "gap": 18,
+                  "padding": [
+                    0,
+                    18
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jMyGx",
+                      "name": "Word Cell - 담담하다",
+                      "width": 260,
+                      "layout": "vertical",
+                      "gap": 5,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "nvsHt",
+                          "name": "Term - 담담하다",
+                          "fill": "$lexi-ink",
+                          "content": "담담하다",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 24,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "S6Dtc",
+                          "name": "Meaning - 담담하다",
+                          "fill": "$lexi-muted",
+                          "content": "감정이 과하지 않고 차분하다",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "iQF2G",
+                      "name": "Example - 담담하다",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "슬픔을 크게 말하지 않아도 담담한 문장이 오래 남았다.",
+                      "lineHeight": 1.25,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "uDFKF",
+                      "name": "Group Badge - 담담하다",
+                      "height": 28,
+                      "fill": "#EEF3EA",
+                      "cornerRadius": 8,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "d0SvR",
+                          "name": "Group Badge Label - 담담하다",
+                          "fill": "$lexi-ink",
+                          "content": "책에서 만난 말",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "X3Erhd",
+                  "name": "Item - context switch",
+                  "width": "fill_container",
+                  "height": 86,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "gap": 18,
+                  "padding": [
+                    0,
+                    18
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Y4tJ7Q",
+                      "name": "Word Cell - context switch",
+                      "width": 260,
+                      "layout": "vertical",
+                      "gap": 5,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "m8wDM",
+                          "name": "Term - context switch",
+                          "fill": "$lexi-ink",
+                          "content": "context switch",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 24,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "BMnQh",
+                          "name": "Meaning - context switch",
+                          "fill": "$lexi-muted",
+                          "content": "작업 맥락 전환",
+                          "fontFamily": "$font-body",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "Uy7K7",
+                      "name": "Example - context switch",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "작은 메모를 남겨두면 다음 context switch 때 덜 헤맨다.",
+                      "lineHeight": 1.25,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "E7QS5a",
+                      "name": "Group Badge - context switch",
+                      "height": 28,
+                      "fill": "#EEF3EA",
+                      "cornerRadius": 8,
+                      "padding": [
+                        0,
+                        10
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "x4qYt",
+                          "name": "Group Badge Label - context switch",
+                          "fill": "$lexi-ink",
+                          "content": "기술 용어",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IC9tj",
+          "name": "Item Detail Panel",
+          "width": 376,
+          "height": "fill_container",
+          "fill": "#FBF8ED",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            34,
+            28
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "YnGsO",
+              "name": "Detail Header",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "q9F5h",
+                  "name": "Detail Eyebrow",
+                  "fill": "$lexi-muted",
+                  "content": "SELECTED ITEM",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "icon",
+                  "id": "gq9JG",
+                  "name": "Detail More Icon",
+                  "width": 22,
+                  "height": 22,
+                  "icon": "ellipsis",
+                  "library": "lucide",
+                  "fill": "$lexi-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "W1wGiZ",
+              "name": "Selected Term Block",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IT7jv",
+                  "name": "Selected Term",
+                  "fill": "$lexi-ink",
+                  "content": "serendipity",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 44,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Yq5yi",
+                  "name": "Selected Meaning",
+                  "fill": "$lexi-ink",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "우연히 좋은 것을 발견하는 일. 계획하지 않았지만 기억에 남는 만남이나 발견.",
+                  "lineHeight": 1.35,
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "I5UVKv",
+              "name": "Selected Metadata",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "N8GHqF",
+                  "name": "Meta - group",
+                  "width": "fill_container",
+                  "height": 30,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "LMxk7",
+                      "name": "Meta Icon - group",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "folder",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "E2eOb",
+                      "name": "Meta Label - group",
+                      "fill": "$lexi-muted",
+                      "content": "group",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VqGbD",
+                      "name": "Meta Value - group",
+                      "fill": "$lexi-ink",
+                      "content": "영어 표현",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iLzAU",
+                  "name": "Meta - source",
+                  "width": "fill_container",
+                  "height": 30,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "PHA2x",
+                      "name": "Meta Icon - source",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "bookmark",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "LoblA",
+                      "name": "Meta Label - source",
+                      "fill": "$lexi-muted",
+                      "content": "source",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vO84P",
+                      "name": "Meta Value - source",
+                      "fill": "$lexi-ink",
+                      "content": "article / design notes",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "u011H",
+                  "name": "Meta - added",
+                  "width": "fill_container",
+                  "height": 30,
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "CyayU",
+                      "name": "Meta Icon - added",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "calendar",
+                      "library": "lucide",
+                      "fill": "$lexi-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "V8Nl6P",
+                      "name": "Meta Label - added",
+                      "fill": "$lexi-muted",
+                      "content": "added",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Jg9F0",
+                      "name": "Meta Value - added",
+                      "fill": "$lexi-ink",
+                      "content": "2026.07.07",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "v2pqB",
+              "name": "Memo Stack",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "z9jEh",
+                  "name": "Memo Section Title",
+                  "fill": "$lexi-muted",
+                  "content": "MEMO / NOTES",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "cBhnJ",
+                  "name": "Memo - 내 문장",
+                  "width": "fill_container",
+                  "fill": "$lexi-note",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mQglX",
+                      "name": "Memo Title - 내 문장",
+                      "fill": "$lexi-ink",
+                      "content": "내 문장",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rSFnK",
+                      "name": "Memo Body - 내 문장",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "I met this word through pure serendipity while reading a cafe review.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "i4uRvd",
+                  "name": "Memo - 기억 단서",
+                  "width": "fill_container",
+                  "fill": "#EEF3EA",
+                  "cornerRadius": 8,
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GmbEG",
+                      "name": "Memo Title - 기억 단서",
+                      "fill": "$lexi-ink",
+                      "content": "기억 단서",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "riDBZ",
+                      "name": "Memo Body - 기억 단서",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "serene + discovery 느낌으로 기억하기. 우연인데 기분 좋은 발견.",
+                      "lineHeight": 1.35,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xEtjN",
+              "name": "Add Memo Button",
+              "width": "fill_container",
+              "height": 46,
+              "fill": "$lexi-accent",
+              "cornerRadius": 8,
+              "gap": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Abk0b",
+                  "name": "Add Memo Icon",
+                  "width": 17,
+                  "height": 17,
+                  "icon": "message-square-plus",
+                  "library": "lucide",
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "id": "vaIAA",
+                  "name": "Add Memo Label",
+                  "fill": "#FFFFFF",
+                  "content": "memo 추가",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "npdmR",
+      "x": 956,
+      "y": 31,
+      "name": "NoteDox Mobile - Item List",
+      "clip": true,
+      "width": 390,
+      "height": 844,
+      "fill": "$lexi-surface",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "SCcgq",
+          "name": "Mobile Header",
+          "width": "fill_container",
+          "fill": "$lexi-sidebar",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            28,
+            22
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "G9DYL",
+              "name": "Mobile Top Row",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "UwV8U",
+                  "name": "Mobile Brand",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Mhpgl",
+                      "name": "Mobile Brand Name",
+                      "fill": "$lexi-ink",
+                      "content": "NoteDox",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 30,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WlHmf",
+                      "name": "Mobile Date",
+                      "fill": "$lexi-muted",
+                      "content": "2026.07.07",
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "c8M8am",
+                  "name": "Mobile New Item",
+                  "width": 42,
+                  "height": 42,
+                  "fill": "$lexi-accent",
+                  "cornerRadius": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "B9QINE",
+                      "name": "Mobile New Item Icon",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "plus",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "E7DAY",
+              "name": "Mobile Heading",
+              "fill": "$lexi-ink",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "오늘 남길 notes와 phrases",
+              "lineHeight": 1.04,
+              "fontFamily": "$font-heading",
+              "fontSize": 34,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "GqF6s",
+              "name": "Mobile Search",
+              "width": "fill_container",
+              "height": 46,
+              "fill": "$lexi-surface",
+              "cornerRadius": 8,
+              "stroke": "$lexi-line",
+              "strokeWidth": 1,
+              "gap": 9,
+              "padding": [
+                0,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "RwzjT",
+                  "name": "Mobile Search Icon",
+                  "width": 17,
+                  "height": 17,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "$lexi-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "D5QRhN",
+                  "name": "Mobile Search Placeholder",
+                  "fill": "$lexi-muted",
+                  "content": "item 또는 memo 검색",
+                  "fontFamily": "$font-body",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LLt8m",
+          "name": "Mobile Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 18,
+          "padding": [
+            20,
+            18
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "AcdhH",
+              "name": "Mobile Group Tabs",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "EOh69",
+                  "name": "Mobile Tab - 전체",
+                  "height": 34,
+                  "fill": "$lexi-accent",
+                  "cornerRadius": 8,
+                  "padding": [
+                    0,
+                    13
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tCMEb",
+                      "name": "Mobile Tab Label - 전체",
+                      "fill": "#FFFFFF",
+                      "content": "전체",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HZeqo",
+                  "name": "Mobile Tab - 영어 표현",
+                  "height": 34,
+                  "fill": "#EEF3EA",
+                  "cornerRadius": 8,
+                  "padding": [
+                    0,
+                    13
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KODq6",
+                      "name": "Mobile Tab Label - 영어 표현",
+                      "fill": "$lexi-ink",
+                      "content": "영어 표현",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "I65IDL",
+                  "name": "Mobile Tab - 기술 용어",
+                  "height": 34,
+                  "fill": "#EEF3EA",
+                  "cornerRadius": 8,
+                  "padding": [
+                    0,
+                    13
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "L8lFz",
+                      "name": "Mobile Tab Label - 기술 용어",
+                      "fill": "$lexi-ink",
+                      "content": "기술 용어",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kVPeW",
+              "name": "Mobile Summary",
+              "width": "fill_container",
+              "height": 78,
+              "fill": "$lexi-warm",
+              "cornerRadius": 8,
+              "gap": 12,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "o8aV3",
+                  "name": "Mobile Summary Icon",
+                  "width": 22,
+                  "height": 22,
+                  "icon": "sparkles",
+                  "library": "lucide",
+                  "fill": "$lexi-accent"
+                },
+                {
+                  "type": "frame",
+                  "id": "RXMNb",
+                  "name": "Mobile Summary Text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IbI8G",
+                      "name": "Mobile Summary Title",
+                      "fill": "$lexi-ink",
+                      "content": "이번 주 24개 item",
+                      "fontFamily": "$font-body",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "H3QJp5",
+                      "name": "Mobile Summary Copy",
+                      "fill": "$lexi-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "memo가 없는 item 6개에 짧은 기억 단서를 추가해보세요.",
+                      "lineHeight": 1.25,
+                      "fontFamily": "$font-body",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SM68W",
+              "name": "Mobile Item List",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "uKnXC",
+                  "name": "Mobile Item - serendipity",
+                  "width": "fill_container",
+                  "fill": "#F7FBF2",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-accent",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "r3PfkS",
+                      "name": "Mobile Item Head - serendipity",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "hedgv",
+                          "name": "Mobile Term - serendipity",
+                          "fill": "$lexi-ink",
+                          "content": "serendipity",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 25,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "kXVkr",
+                          "name": "Mobile Group - serendipity",
+                          "fill": "$lexi-muted",
+                          "content": "영어 표현",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "Yiso2",
+                      "name": "Mobile Meaning - serendipity",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "우연히 좋은 것을 발견하는 일. 내 문장 memo 2개",
+                      "lineHeight": 1.3,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rK9mw",
+                  "name": "Mobile Item - affordance",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "TQi7X",
+                      "name": "Mobile Item Head - affordance",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "oHTCr",
+                          "name": "Mobile Term - affordance",
+                          "fill": "$lexi-ink",
+                          "content": "affordance",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 25,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qmeMG",
+                          "name": "Mobile Group - affordance",
+                          "fill": "$lexi-muted",
+                          "content": "기술 용어",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "HuJYb",
+                      "name": "Mobile Meaning - affordance",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "행동 가능성을 드러내는 단서",
+                      "lineHeight": 1.3,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hKPLG",
+                  "name": "Mobile Item - 담담하다",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 8,
+                  "stroke": "$lexi-line",
+                  "strokeWidth": 1,
+                  "layout": "vertical",
+                  "gap": 10,
+                  "padding": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "RnOJv",
+                      "name": "Mobile Item Head - 담담하다",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "J5Pg8S",
+                          "name": "Mobile Term - 담담하다",
+                          "fill": "$lexi-ink",
+                          "content": "담담하다",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 25,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "YHesJ",
+                          "name": "Mobile Group - 담담하다",
+                          "fill": "$lexi-muted",
+                          "content": "책에서 만난 말",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "uRrVj",
+                      "name": "Mobile Meaning - 담담하다",
+                      "fill": "$lexi-ink",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "감정이 과하지 않고 차분하다",
+                      "lineHeight": 1.3,
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LNXz7",
+          "name": "Mobile Bottom Nav",
+          "width": "fill_container",
+          "height": 72,
+          "fill": "$lexi-surface",
+          "stroke": "$lexi-line",
+          "strokeWidth": {
+            "top": 1
+          },
+          "padding": [
+            0,
+            28
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "hVoxU",
+              "name": "Bottom Nav - Items",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ZuHKn",
+                  "name": "Bottom Nav Icon - Items",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "book-open",
+                  "library": "lucide",
+                  "fill": "$lexi-accent"
+                },
+                {
+                  "type": "text",
+                  "id": "puwqg",
+                  "name": "Bottom Nav Label - Items",
+                  "fill": "$lexi-accent",
+                  "content": "Items",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Ajgem",
+              "name": "Bottom Nav - Groups",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "KWT2z",
+                  "name": "Bottom Nav Icon - Groups",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "folder",
+                  "library": "lucide",
+                  "fill": "$lexi-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "j7rOYr",
+                  "name": "Bottom Nav Label - Groups",
+                  "fill": "$lexi-muted",
+                  "content": "Groups",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "orUAd",
+              "name": "Bottom Nav - Notes",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Eae2t",
+                  "name": "Bottom Nav Icon - Notes",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "sticky-note",
+                  "library": "lucide",
+                  "fill": "$lexi-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "PRI3R",
+                  "name": "Bottom Nav Label - Notes",
+                  "fill": "$lexi-muted",
+                  "content": "Notes",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "lexi-bg": {
+      "type": "color",
+      "value": "#F4F0E6"
+    },
+    "lexi-surface": {
+      "type": "color",
+      "value": "#FFFDF8"
+    },
+    "lexi-sidebar": {
+      "type": "color",
+      "value": "#E7DED0"
+    },
+    "lexi-ink": {
+      "type": "color",
+      "value": "#2E251C"
+    },
+    "lexi-muted": {
+      "type": "color",
+      "value": "#7A6A59"
+    },
+    "lexi-line": {
+      "type": "color",
+      "value": "#D2C4B4"
+    },
+    "lexi-accent": {
+      "type": "color",
+      "value": "#8B5A2B"
+    },
+    "lexi-warm": {
+      "type": "color",
+      "value": "#F2E4C8"
+    },
+    "lexi-note": {
+      "type": "color",
+      "value": "#EED9A8"
+    },
+    "font-heading": {
+      "type": "string",
+      "value": "Playfair Display"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Noto Sans KR"
+    },
+    "font-mono": {
+      "type": "string",
+      "value": "Geist Mono"
+    }
+  },
+  "fileToken": "05d3e9ea-01f1-4287-bbe6-d85b9e2d9788"
+}

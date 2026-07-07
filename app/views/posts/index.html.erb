@@ -7,49 +7,51 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="mb-6 flex items-center justify-between gap-3 pt-3">
+  <div class="mb-6 flex items-center justify-between gap-3 pt-4 sm:pt-5">
     <div>
-      <h1 class="text-2xl font-bold text-gray-900">단어·표현 노트</h1>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">NoteDox</p>
+      <h1 class="nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">Notes archive</h1>
+      <p class="mt-1 text-sm text-[color:var(--nd-muted)]">오늘 만난 단어, 표현, 예문을 item으로 쌓고 memo로 이어서 학습해요.</p>
     </div>
-    <%= link_to new_post_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md bg-blue-600 text-white hover:bg-blue-500", aria: { label: "새 항목 추가" }, title: "새 항목 추가" do %>
+    <%= link_to new_post_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-white hover:bg-[color:var(--nd-accent-strong)]", aria: { label: "새 항목 추가" }, title: "새 항목 추가" do %>
       <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
       </svg>
     <% end %>
   </div>
 
-  <div class="mb-6 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm">
+  <div class="mb-6 rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-3">
     <%= form_with url: posts_path, method: :get, class: "flex items-center gap-2" do |form| %>
-      <%= form.text_field :query, value: params[:query], placeholder: "검색어 입력", class: "min-w-0 flex-1 rounded-md border border-gray-300 px-2.5 py-2 text-sm" %>
-      <%= form.select :group_id, options_from_collection_for_select(@groups, :id, :name, params[:group_id]), { include_blank: "전체 그룹" }, class: "w-28 rounded-md border border-gray-300 px-2.5 py-2 text-sm sm:w-40" %>
-      <%= form.submit "검색", class: "rounded-md bg-blue-600 px-3.5 py-2 text-sm text-white" %>
+      <%= form.text_field :query, value: params[:query], placeholder: "item 또는 memo 검색", class: "min-w-0 flex-1 rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-2.5 py-2 text-sm text-[color:var(--nd-ink)] placeholder:text-[color:var(--nd-muted)]" %>
+      <%= form.select :group_id, options_from_collection_for_select(@groups, :id, :name, params[:group_id]), { include_blank: "전체 그룹" }, class: "w-28 rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-2.5 py-2 text-sm text-[color:var(--nd-ink)] sm:w-40" %>
+      <%= form.submit "검색", class: "rounded-md bg-[color:var(--nd-accent)] px-3.5 py-2 text-sm text-white hover:bg-[color:var(--nd-accent-strong)]" %>
     <% end %>
   </div>
 
   <div id="posts" class="space-y-4">
     <% if @posts.any? %>
       <% @posts.each do |post| %>
-        <div class="rounded-2xl border border-gray-200 bg-white px-5 py-4 shadow-sm transition hover:shadow-md">
-          <h2 class="text-lg font-semibold text-gray-900 leading-tight">
-            <%= link_to post.title, post_path(post), class: "hover:text-blue-600" %>
+        <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-5 py-4 transition hover:border-[color:var(--nd-accent)]/50">
+          <h2 class="nd-heading text-2xl font-semibold text-[color:var(--nd-ink)] leading-tight">
+            <%= link_to post.title, post_path(post), class: "hover:text-[color:var(--nd-accent)]" %>
           </h2>
-          <div class="mt-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 text-sm text-gray-500">
+          <div class="mt-3 flex flex-col gap-2 text-sm text-[color:var(--nd-muted)] sm:flex-row sm:items-center sm:justify-between">
             <div class="min-w-0 text-left">
-              <span class="font-medium text-gray-700"><%= post.user.display_name %></span>
+              <span class="font-medium text-[color:var(--nd-ink)]"><%= post.user.display_name %></span>
               <% if post.group.present? %>
-                <span class="ml-2 rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700"><%= post.group.name %></span>
+                <span class="ml-2 rounded-full bg-[color:var(--nd-sidebar)] px-2 py-1 text-xs font-medium text-[color:var(--nd-accent)]"><%= post.group.name %></span>
               <% end %>
             </div>
-            <div class="flex flex-wrap justify-start sm:justify-end items-center gap-2 text-sm text-gray-500">
+            <div class="flex flex-wrap items-center justify-start gap-2 text-sm text-[color:var(--nd-muted)] sm:justify-end">
               <span>조회: <%= post.views_count_for_display %></span>
-              <span class="text-slate-300">•</span>
+              <span class="text-[color:var(--nd-line)]">•</span>
               <span>댓글: <%= post.comments.count %></span>
             </div>
           </div>
         </div>
       <% end %>
     <% else %>
-      <p class="text-center py-10 text-gray-500">등록된 항목이 없습니다.</p>
+      <p class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] py-10 text-center text-[color:var(--nd-muted)]">아직 등록된 item이 없습니다. 오른쪽 상단 + 버튼으로 첫 기록을 남겨보세요.</p>
     <% end %>
   </div>
 </div>

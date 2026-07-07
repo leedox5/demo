@@ -6,11 +6,12 @@
 - Current domain naming in code uses Post as the item entity and Group for categorization.
 
 ## Product Concept
-- Product name: LexiNote.
-- LexiNote is a personal learning notebook for collecting newly encountered words, phrases, terms, examples, and memory cues.
+- Product name: NoteDox.
+- NoteDox is a personal learning notebook for collecting newly encountered words, phrases, terms, examples, and memory cues.
+- The name originates from Leedox and emphasizes the "Dox" keyword as a documentation-first, archive-oriented identity.
 - The user-facing experience should feel like a calm vocabulary and expression notebook, not a community board or generic CRUD app.
 - Use "item", "word/phrase", "group", and "memo/note" language in UI copy; keep internal Rails model names such as Post and Comment only in code.
-- Korean remains the primary UX language, with selective English brand terms such as "LexiNote", "Words & phrases", and "Notes" when they strengthen the product identity.
+- Korean remains the primary UX language, with selective English brand terms such as "NoteDox", "Words & phrases", and "Notes" when they strengthen the product identity.
 
 ## Tech Stack
 - Backend: Ruby on Rails 8.1.x

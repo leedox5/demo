@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "단어장" %></title>
+    <title><%= content_for(:title) || "NoteDox" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="단어장">
+    <meta name="application-name" content="NoteDox">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,14 +23,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-50 text-gray-900">
-    <nav class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur-sm" data-controller="mobile-menu">
+  <body>
+    <nav class="sticky top-0 z-50 border-b border-[color:var(--nd-line)] bg-[color:var(--nd-surface)]/95 backdrop-blur-sm" data-controller="mobile-menu">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <%= link_to "LexiNote", root_path, class: "text-lg font-semibold text-blue-600" %>
+        <%= link_to "NoteDox", root_path, class: "nd-heading text-2xl font-semibold text-[color:var(--nd-ink)]" %>
 
         <button
           type="button"
-          class="inline-flex items-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-blue-600 md:hidden"
+          class="inline-flex items-center rounded-md p-2 text-[color:var(--nd-muted)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)] md:hidden"
           aria-label="Toggle menu"
           data-action="mobile-menu#toggle"
           data-mobile-menu-target="button"
@@ -40,47 +40,47 @@
           </svg>
         </button>
 
-        <div class="hidden items-center gap-4 text-sm font-medium text-gray-700 md:flex">
-          <%= link_to "홈", root_path, class: "hover:text-blue-600" %>
-          <%= link_to "항목", posts_path, class: "hover:text-blue-600" %>
-          <%= link_to "그룹", groups_path, class: "hover:text-blue-600" %>
+        <div class="hidden items-center gap-4 text-sm font-medium text-[color:var(--nd-muted)] md:flex">
+          <%= link_to "홈", root_path, class: "hover:text-[color:var(--nd-accent)]" %>
+          <%= link_to "항목", posts_path, class: "hover:text-[color:var(--nd-accent)]" %>
+          <%= link_to "그룹", groups_path, class: "hover:text-[color:var(--nd-accent)]" %>
           <% if user_signed_in? && current_user.is_admin? %>
-            <%= link_to "사용자 관리", admin_users_path, class: "hover:text-blue-600" %>
+            <%= link_to "사용자 관리", admin_users_path, class: "hover:text-[color:var(--nd-accent)]" %>
           <% end %>
           <% if user_signed_in? %>
-            <%= link_to current_user.display_name, edit_user_registration_path, class: "text-gray-500 hover:text-blue-600" %>
-            <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "hover:text-blue-600" %>
+            <%= link_to current_user.display_name, edit_user_registration_path, class: "text-[color:var(--nd-muted)] hover:text-[color:var(--nd-accent)]" %>
+            <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "hover:text-[color:var(--nd-accent)]" %>
           <% else %>
-            <%= link_to "로그인", new_user_session_path, class: "hover:text-blue-600" %>
-            <%= link_to "회원가입", new_user_registration_path, class: "hover:text-blue-600" %>
+            <%= link_to "로그인", new_user_session_path, class: "hover:text-[color:var(--nd-accent)]" %>
+            <%= link_to "회원가입", new_user_registration_path, class: "hover:text-[color:var(--nd-accent)]" %>
           <% end %>
         </div>
       </div>
 
-      <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white px-6 py-3 md:hidden" data-mobile-menu-target="menu">
-        <div class="flex flex-col gap-2 text-sm font-medium text-gray-700" data-action="click->mobile-menu#close">
-          <%= link_to "홈", root_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
-          <%= link_to "항목", posts_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
-          <%= link_to "그룹", groups_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
+      <div id="mobile-menu" class="hidden border-t border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-6 py-3 md:hidden" data-mobile-menu-target="menu">
+        <div class="flex flex-col gap-2 text-sm font-medium text-[color:var(--nd-muted)]" data-action="click->mobile-menu#close">
+          <%= link_to "홈", root_path, class: "rounded px-2 py-1 hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
+          <%= link_to "항목", posts_path, class: "rounded px-2 py-1 hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
+          <%= link_to "그룹", groups_path, class: "rounded px-2 py-1 hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
           <% if user_signed_in? && current_user.is_admin? %>
-            <%= link_to "사용자 관리", admin_users_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
+            <%= link_to "사용자 관리", admin_users_path, class: "rounded px-2 py-1 hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
           <% end %>
           <% if user_signed_in? %>
-            <%= link_to current_user.display_name, edit_user_registration_path, class: "rounded px-2 py-1 text-gray-500 hover:bg-gray-100 hover:text-blue-600" %>
-            <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "rounded px-2 py-1 text-left hover:bg-gray-100 hover:text-blue-600" %>
+            <%= link_to current_user.display_name, edit_user_registration_path, class: "rounded px-2 py-1 text-[color:var(--nd-muted)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
+            <%= button_to "로그아웃", destroy_user_session_path, method: :delete, class: "rounded px-2 py-1 text-left hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
           <% else %>
-            <%= link_to "로그인", new_user_session_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
-            <%= link_to "회원가입", new_user_registration_path, class: "rounded px-2 py-1 hover:bg-gray-100 hover:text-blue-600" %>
+            <%= link_to "로그인", new_user_session_path, class: "rounded px-2 py-1 hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
+            <%= link_to "회원가입", new_user_registration_path, class: "rounded px-2 py-1 hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]" %>
           <% end %>
         </div>
       </div>
     </nav>
 
     <% if notice %>
-      <div class="mx-auto mt-4 max-w-6xl rounded bg-green-100 px-4 py-3 text-sm text-green-800"><%= notice %></div>
+      <div class="mx-auto mt-4 max-w-6xl rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-4 py-3 text-sm text-[color:var(--nd-ink)]"><%= notice %></div>
     <% end %>
     <% if alert %>
-      <div class="mx-auto mt-2 max-w-6xl rounded bg-red-100 px-4 py-3 text-sm text-red-800"><%= alert %></div>
+      <div class="mx-auto mt-2 max-w-6xl rounded-md border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900"><%= alert %></div>
     <% end %>
 
     <% main_top_padding = content_for?(:main_top_padding) ? yield(:main_top_padding) : "pt-5" %>
