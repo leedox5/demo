@@ -55,7 +55,7 @@
     <div class="mb-4 flex items-center justify-between">
       <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">연결 노트</h2>
       <% if @comments.any? %>
-        <span class="text-sm text-[color:var(--nd-muted)]"><%= pluralize(@comments.size, "개") %> 메모</span>
+        <span class="text-sm text-[color:var(--nd-muted)]"><%= @comments.size %>개 메모</span>
       <% end %>
     </div>
 
