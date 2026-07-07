@@ -1,76 +1,208 @@
 <% content_for :title, "항목 상세" %>
+<% content_for :main_top_padding, "pt-4 sm:pt-5" %>
+<% content_for :main_x_padding, "px-0 sm:px-6" %>
 
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<% groups = user_signed_in? ? current_user.groups.order(:name) : Group.none %>
+<% primary_memos = @comments.select { |comment| comment.commentable_type == "Post" } %>
 
-  <div class="mb-6 rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-6 py-5">
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-      <div class="space-y-2">
-        <h2 class="nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]"><%= @post.title %></h2>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-[color:var(--nd-muted)]">
-          <span><%= @post.user.display_name %></span>
-          <% if @post.group.present? %>
-            <span class="rounded-full bg-[color:var(--nd-sidebar)] px-2 py-1 text-xs font-medium text-[color:var(--nd-accent)]"><%= @post.group.name %></span>
+<div class="overflow-hidden rounded-none border-y border-[color:var(--nd-line)] bg-[color:var(--nd-bg)] sm:rounded-xl sm:border">
+  <div class="grid min-h-[70vh] lg:grid-cols-[14rem_1fr] xl:grid-cols-[14rem_1fr_20rem]">
+    <aside class="hidden bg-[color:var(--nd-sidebar)] p-6 lg:flex lg:flex-col lg:gap-7">
+      <div>
+        <%= link_to "NoteDox", root_path, class: "nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]" %>
+        <p class="mt-1 text-xs text-[color:var(--nd-muted)]">Words & phrases archive</p>
+      </div>
+
+      <nav class="space-y-2 text-sm">
+        <%= link_to posts_path, class: "flex items-center gap-3 rounded-lg bg-[color:var(--nd-accent)] px-3 py-2.5 font-semibold text-white" do %>
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.75v10.5M6.75 7.5h7.5a3 3 0 013 3v7.5h-7.5a3 3 0 01-3-3v-7.5z" />
+          </svg>
+          모든 item
+        <% end %>
+
+        <%= link_to groups_path, class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-surface)]" do %>
+          <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 6.75h6.75l1.5 1.5h8.25v9a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6.75z" />
+          </svg>
+          그룹
+        <% end %>
+
+        <%= link_to posts_path, class: "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-surface)]" do %>
+          <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h8M8 14h5m-7.5 6.25h13A1.75 1.75 0 0020.25 18.5v-13A1.75 1.75 0 0018.5 3.75h-13A1.75 1.75 0 003.75 5.5v13A1.75 1.75 0 005.5 20.25z" />
+          </svg>
+          최근 memo
+        <% end %>
+      </nav>
+
+      <section class="space-y-3">
+        <div class="flex items-center justify-between">
+          <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Groups</p>
+          <% if user_signed_in? %>
+            <%= link_to new_group_path, class: "text-[color:var(--nd-muted)] hover:text-[color:var(--nd-accent)]", aria: { label: "그룹 추가" }, title: "그룹 추가" do %>
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+              </svg>
+            <% end %>
           <% end %>
-          <span class="text-[color:var(--nd-line)]">•</span>
-          <span><%= l(@post.created_at, format: :short) %></span>
-          <span class="text-[color:var(--nd-line)]">•</span>
-          <span>조회: <%= @post.views_count_for_display %></span>
+        </div>
+
+        <div class="space-y-2">
+          <% if groups.any? %>
+            <% groups.limit(4).each do |group| %>
+              <%= link_to posts_path(group_id: group.id), class: "flex items-center gap-3 rounded-md py-1.5 text-sm text-[color:var(--nd-ink)] hover:text-[color:var(--nd-accent)]" do %>
+                <span class="h-2 w-2 rounded-full <%= @post.group == group ? "bg-[color:var(--nd-accent)]" : "bg-[color:var(--nd-line)]" %>"></span>
+                <span><%= group.name %></span>
+              <% end %>
+            <% end %>
+          <% else %>
+            <p class="text-sm leading-6 text-[color:var(--nd-muted)]">로그인하면 내 그룹을 기준으로 item을 정리할 수 있어요.</p>
+          <% end %>
+        </div>
+      </section>
+
+      <div class="mt-auto rounded-lg bg-[color:var(--nd-surface)]/70 p-4">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Reading</p>
+        <p class="mt-2 nd-heading text-lg leading-tight text-[color:var(--nd-ink)]">읽은 표현을 내 문장으로 다시 꺼내면 오래 남아요.</p>
+      </div>
+    </aside>
+
+    <section class="bg-[color:var(--nd-surface)] p-5 sm:p-6 lg:p-8">
+      <% if notice.present? %>
+        <p class="mb-5 inline-block rounded-md bg-green-50 px-3 py-2 font-medium text-green-500" id="notice"><%= notice %></p>
+      <% end %>
+
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <%= link_to posts_path, class: "inline-flex h-10 w-fit items-center gap-2 rounded-md border border-[color:var(--nd-line)] bg-white px-3 text-sm font-semibold text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-sidebar)]" do %>
+          <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          목록으로
+        <% end %>
+
+        <div class="flex items-center gap-2">
+          <% if user_signed_in? %>
+            <%= link_to edit_post_path(@post), class: "inline-flex h-10 items-center gap-2 rounded-md border border-[color:var(--nd-line)] bg-white px-3 text-sm font-bold text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-sidebar)]" do %>
+              <svg class="h-4 w-4 text-[color:var(--nd-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4h2m-7 14h12M6 18l-1 3 3-1 8-8-2-2-8 8z" />
+              </svg>
+              수정
+            <% end %>
+
+            <a href="#memo-form" class="inline-flex h-10 items-center gap-2 rounded-md bg-[color:var(--nd-accent)] px-4 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+              </svg>
+              memo 추가
+            </a>
+          <% else %>
+            <%= link_to "로그인 후 memo 추가", new_user_session_path, class: "inline-flex h-10 items-center rounded-md bg-[color:var(--nd-accent)] px-4 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]" %>
+          <% end %>
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
-        <%= link_to edit_post_path(@post), class: "inline-flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-[color:var(--nd-muted)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]", aria: { label: "항목 수정" }, title: "항목 수정" do %>
-          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4h2m-7 14h12M6 18l-1 3 3-1 8-8-2-2-8 8z" />
-          </svg>
-        <% end %>
+      <article class="mt-6 space-y-6">
+        <div class="rounded-lg border border-[color:var(--nd-line)] bg-white px-6 py-6 sm:px-8">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex flex-wrap items-center gap-2">
+              <% if @post.group.present? %>
+                <span class="inline-flex items-center gap-2 rounded-md bg-[color:var(--nd-sidebar)] px-3 py-1.5 text-xs font-bold text-[color:var(--nd-accent)]">
+                  <span class="h-2 w-2 rounded-full bg-[color:var(--nd-accent)]"></span>
+                  <%= @post.group.name %>
+                </span>
+              <% else %>
+                <span class="inline-flex items-center rounded-md bg-[color:var(--nd-sidebar)] px-3 py-1.5 text-xs font-bold text-[color:var(--nd-muted)]">그룹 없음</span>
+              <% end %>
+              <span class="text-xs text-[color:var(--nd-muted)]">작성자 <%= @post.user.display_name %></span>
+            </div>
 
-        <%= link_to posts_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-[color:var(--nd-muted)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]", aria: { label: "항목 목록으로" }, title: "항목 목록으로" do %>
-          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-          </svg>
-        <% end %>
+            <p class="text-xs text-[color:var(--nd-muted)]">마지막 수정 <%= l(@post.updated_at, format: :short) %></p>
+          </div>
 
-        <%= button_to @post, method: :delete, form_class: "inline-block", class: "inline-flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-white hover:bg-[color:var(--nd-accent-strong)]", data: { turbo_confirm: "정말 삭제할까요?" }, aria: { label: "항목 삭제" }, title: "항목 삭제" do %>
-          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12m-9 0V5h6v2m-7 0l1 12h4l1-12" />
-          </svg>
+          <h1 class="mt-5 nd-heading text-5xl font-semibold leading-tight text-[color:var(--nd-ink)]"><%= @post.title %></h1>
+          <p class="mt-5 whitespace-pre-line text-lg leading-7 text-[color:var(--nd-ink)]"><%= @post.body %></p>
+        </div>
+
+        <div class="rounded-lg border border-[color:var(--nd-line)] bg-[#F7FBF2] px-6 py-5">
+          <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Context</p>
+          <p class="mt-3 nd-heading text-2xl leading-tight text-[color:var(--nd-ink)]">Connecting the dots: 하나의 item에서 시작한 생각을 memo로 이어 붙이며 개념의 맥락을 확장해보세요.</p>
+        </div>
+
+        <section class="space-y-4" id="memo-form">
+          <div class="flex items-center justify-between">
+            <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">연결 노트</h2>
+            <span class="text-sm text-[color:var(--nd-muted)]"><%= @comments.size %>개 memo</span>
+          </div>
+
+          <% if user_signed_in? %>
+            <div class="rounded-lg border border-[color:var(--nd-line)] bg-white p-4">
+              <%= render "comments/form", post: @post, commentable_type: "Post", commentable_id: @post.id, submit_text: "메모 남기기" %>
+            </div>
+          <% else %>
+            <p class="rounded-lg border border-[color:var(--nd-line)] bg-white p-4 text-sm text-[color:var(--nd-muted)]">메모 작성을 위해 <%= link_to "로그인", new_user_session_path, class: "font-bold text-[color:var(--nd-accent)] hover:underline" %> 해주세요.</p>
+          <% end %>
+
+          <div class="space-y-4">
+            <% if @comments.any? %>
+              <%= render partial: "comments/comment", collection: @comments, as: :comment, locals: { post: @post } %>
+            <% else %>
+              <div class="rounded-lg border border-dashed border-[color:var(--nd-line)] bg-white px-5 py-8 text-center">
+                <p class="nd-heading text-2xl font-semibold text-[color:var(--nd-ink)]">아직 남겨진 memo가 없습니다.</p>
+                <p class="mt-2 text-sm text-[color:var(--nd-muted)]">이 item을 내 문장으로 다시 적어보며 첫 memo를 남겨보세요.</p>
+              </div>
+            <% end %>
+          </div>
+        </section>
+      </article>
+    </section>
+
+    <aside class="border-t border-[color:var(--nd-line)] bg-[#FBF8ED] p-5 sm:p-6 xl:border-l xl:border-t-0">
+      <div class="flex items-center justify-between">
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Memo / notes</p>
+        <span class="text-xs text-[color:var(--nd-muted)]"><%= primary_memos.size %>개</span>
+      </div>
+
+      <div class="mt-6 space-y-3">
+        <% if primary_memos.any? %>
+          <% primary_memos.first(3).each_with_index do |comment, index| %>
+            <div class="rounded-lg <%= index.zero? ? "bg-[#EED9A8]" : "bg-white border border-[color:var(--nd-line)]" %> p-4">
+              <p class="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--nd-muted)]"><%= index.zero? ? "내 문장" : "memo" %></p>
+              <p class="mt-2 whitespace-pre-line text-sm leading-6 text-[color:var(--nd-ink)]"><%= truncate(comment.body.to_s, length: 120) %></p>
+              <p class="mt-2 text-xs text-[color:var(--nd-muted)]"><%= l(comment.created_at, format: :short) %></p>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="rounded-lg bg-[#EED9A8] p-4">
+            <p class="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--nd-muted)]">Memo cue</p>
+            <p class="mt-2 text-sm leading-6 text-[color:var(--nd-ink)]">아직 memo가 없습니다. 이 표현을 나만의 예문으로 다시 써보세요.</p>
+          </div>
         <% end %>
       </div>
-    </div>
 
-    <p class="mt-4 text-sm leading-6 text-[color:var(--nd-muted)]">
-      Connecting the dots: 하나의 item에서 시작한 생각을 메모로 이어 붙이며 개념의 맥락을 확장해보세요.
-    </p>
-  </div>
+      <dl class="mt-6 space-y-3 text-sm">
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">views</dt>
+          <dd class="text-[color:var(--nd-ink)]"><%= @post.views_count_for_display %></dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">memo</dt>
+          <dd class="text-[color:var(--nd-ink)]"><%= @comments.size %></dd>
+        </div>
+        <div class="flex items-center gap-3">
+          <dt class="font-mono text-xs text-[color:var(--nd-muted)]">added</dt>
+          <dd class="text-[color:var(--nd-ink)]"><%= l(@post.created_at, format: :short) %></dd>
+        </div>
+      </dl>
 
-  <%= render @post %>
-</div>
-
-<div class="w-full mt-10">
-  <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-6">
-    <div class="mb-4 flex items-center justify-between">
-      <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">연결 노트</h2>
-      <% if @comments.any? %>
-        <span class="text-sm text-[color:var(--nd-muted)]"><%= @comments.size %>개 메모</span>
+      <% if user_signed_in? %>
+        <%= button_to @post, method: :delete, form_class: "mt-6", class: "inline-flex h-10 w-full items-center justify-center gap-2 rounded-md border border-red-600 bg-red-50 text-sm font-bold text-red-700 hover:bg-red-600 hover:text-white", data: { turbo_confirm: "정말 삭제할까요?" } do %>
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12m-9 0V5h6v2m-7 0l1 12h4l1-12" />
+          </svg>
+          항목 삭제
+        <% end %>
       <% end %>
-    </div>
-
-    <% if user_signed_in? %>
-      <%= render "comments/form", post: @post, commentable_type: "Post", commentable_id: @post.id, submit_text: "메모 남기기" %>
-    <% else %>
-      <p class="text-sm text-[color:var(--nd-muted)]">메모 작성을 위해 <%= link_to "로그인", new_user_session_path, class: "text-[color:var(--nd-accent)] hover:underline" %> 해주세요.</p>
-    <% end %>
-
-    <div class="mt-8 space-y-4">
-      <% if @comments.any? %>
-        <%= render partial: "comments/comment", collection: @comments, as: :comment, locals: { post: @post } %>
-      <% else %>
-        <p class="text-[color:var(--nd-muted)]">아직 남겨진 메모가 없습니다.</p>
-      <% end %>
-    </div>
+    </aside>
   </div>
 </div>
