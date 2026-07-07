@@ -1,8 +1,19 @@
-<% content_for :title, "New group" %>
+<% content_for :title, "새 그룹" %>
+<% content_for :main_top_padding, "pt-4 sm:pt-5" %>
 
-<div class="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-  <h1 class="text-2xl font-semibold text-gray-900">새 그룹 만들기</h1>
-  <div class="mt-6">
-    <%= render "form", group: @group %>
+<div class="mx-auto max-w-2xl">
+  <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-6">
+    <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Settings / Groups</p>
+    <h1 class="mt-1 nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">새 그룹 만들기</h1>
+    <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]">새 word / phrase를 모을 주제 묶음을 만듭니다.</p>
+
+    <div class="mt-6 rounded-lg bg-[#EED9A8] p-4">
+      <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Tip</p>
+      <p class="mt-2 text-sm leading-6 text-[color:var(--nd-ink)]">그룹명은 짧고 검색하기 쉬운 이름이 좋아요. 예: 영어 표현, 기술 용어, 책에서 만난 말.</p>
+    </div>
+
+    <div class="mt-6">
+      <%= render "form", group: @group %>
+    </div>
   </div>
 </div>

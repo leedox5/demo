@@ -1,8 +1,19 @@
-<% content_for :title, "Edit group" %>
+<% content_for :title, "그룹 수정" %>
+<% content_for :main_top_padding, "pt-4 sm:pt-5" %>
 
-<div class="mx-auto max-w-2xl rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-  <h1 class="text-2xl font-semibold text-gray-900">그룹 수정</h1>
-  <div class="mt-6">
-    <%= render "form", group: @group %>
+<div class="mx-auto max-w-2xl">
+  <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-6">
+    <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Settings / Groups</p>
+    <h1 class="mt-1 nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">그룹 수정</h1>
+    <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]"><%= @group.name %> 그룹의 이름과 설명을 다듬습니다.</p>
+
+    <div class="mt-6 rounded-lg bg-[#EED9A8] p-4">
+      <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Safety</p>
+      <p class="mt-2 text-sm leading-6 text-[color:var(--nd-ink)]">그룹명을 바꿔도 연결된 item은 그대로 유지됩니다.</p>
+    </div>
+
+    <div class="mt-6">
+      <%= render "form", group: @group %>
+    </div>
   </div>
 </div>

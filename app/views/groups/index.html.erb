@@ -1,34 +1,113 @@
-<% content_for :title, "Groups" %>
+<% content_for :title, "그룹 관리" %>
+<% content_for :main_top_padding, "pt-4 sm:pt-5" %>
+
+<% total_items = @groups.sum { |group| group.posts.size } %>
 
 <div class="w-full">
-  <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-    <div>
-      <h1 class="text-3xl font-semibold text-gray-900">그룹</h1>
-      <p class="mt-1 text-sm text-gray-500">항목을 주제별로 정리해보세요.</p>
-    </div>
-    <%= link_to "새 그룹 만들기", new_group_path, class: "rounded-md bg-blue-600 px-3.5 py-2.5 text-white" %>
-  </div>
+  <div class="mb-6 rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-6 py-5">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Settings</p>
+        <h1 class="nd-heading text-4xl font-semibold text-[color:var(--nd-ink)]">그룹 관리</h1>
+        <p class="mt-1 text-sm text-[color:var(--nd-muted)]">item을 다시 찾기 쉬운 묶음으로 정리하고 관리합니다.</p>
+      </div>
 
-  <% if @groups.any? %>
-    <div class="grid gap-4 md:grid-cols-2">
-      <% @groups.each do |group| %>
-        <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3">
-            <div>
-              <h2 class="text-lg font-semibold text-gray-900"><%= link_to group.name, group_path(group), class: "hover:text-blue-600" %></h2>
-              <p class="mt-2 text-sm text-gray-600"><%= group.description.presence || "설명 없음" %></p>
-            </div>
-            <div class="flex gap-2">
-              <%= link_to "수정", edit_group_path(group), class: "text-sm font-medium text-blue-600" %>
-              <%= button_to "삭제", group_path(group), method: :delete, form_class: "inline", class: "text-sm font-medium text-red-600", data: { turbo_confirm: "삭제할까요?" } %>
-            </div>
-          </div>
-        </div>
+      <%= link_to new_group_path, class: "inline-flex h-10 items-center gap-2 rounded-md bg-[color:var(--nd-accent)] px-4 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]" do %>
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+        </svg>
+        새 그룹
       <% end %>
     </div>
-  <% else %>
-    <div class="rounded-2xl border border-dashed border-gray-300 bg-white p-8 text-center text-gray-500">
-      아직 그룹이 없습니다. 첫 그룹을 만들어보세요.
-    </div>
-  <% end %>
+  </div>
+
+  <div class="grid gap-5 lg:grid-cols-[16rem_1fr]">
+    <aside class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-sidebar)] p-5">
+      <p class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Settings</p>
+      <nav class="mt-4 space-y-2 text-sm">
+        <%= link_to groups_path, class: "flex items-center justify-between rounded-lg bg-[color:var(--nd-accent)] px-3 py-2.5 font-bold text-white" do %>
+          <span>그룹</span>
+          <span><%= @groups.size %></span>
+        <% end %>
+        <%= link_to posts_path, class: "block rounded-lg px-3 py-2.5 font-medium text-[color:var(--nd-ink)] hover:bg-[color:var(--nd-surface)]" do %>
+          item archive
+        <% end %>
+      </nav>
+
+      <div class="mt-6 rounded-lg bg-[color:var(--nd-surface)]/70 p-4">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Safety</p>
+        <p class="mt-2 text-sm leading-6 text-[color:var(--nd-ink)]">그룹을 삭제해도 item은 삭제되지 않고 그룹 없음으로 이동합니다.</p>
+      </div>
+    </aside>
+
+    <section class="space-y-5">
+      <div class="grid gap-3 sm:grid-cols-3">
+        <div class="rounded-lg border border-[color:var(--nd-line)] bg-green-50 px-4 py-3">
+          <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Groups</p>
+          <p class="mt-1 nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]"><%= @groups.size %></p>
+        </div>
+        <div class="rounded-lg border border-[color:var(--nd-line)] bg-[#F1F5EC] px-4 py-3">
+          <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Grouped items</p>
+          <p class="mt-1 nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]"><%= total_items %></p>
+        </div>
+        <div class="rounded-lg border border-[color:var(--nd-line)] bg-[#F2E4C8] px-4 py-3">
+          <p class="text-xs font-bold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Mode</p>
+          <p class="mt-2 text-sm font-bold text-[color:var(--nd-ink)]">Settings</p>
+        </div>
+      </div>
+
+      <% if @groups.any? %>
+        <div class="overflow-hidden rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)]">
+          <div class="flex items-center justify-between border-b border-[color:var(--nd-line)] px-5 py-4">
+            <div>
+              <h2 class="nd-heading text-2xl font-semibold text-[color:var(--nd-ink)]">그룹 목록</h2>
+              <p class="mt-1 text-sm text-[color:var(--nd-muted)]">이름, 설명, 연결된 item 수를 확인하고 정리하세요.</p>
+            </div>
+          </div>
+
+          <div class="divide-y divide-gray-200">
+            <% @groups.each do |group| %>
+              <article class="px-5 py-4 transition hover:bg-[color:var(--nd-sidebar)]/65">
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span class="h-2 w-2 rounded-full bg-[color:var(--nd-accent)]"></span>
+                      <h3 class="text-lg font-bold text-[color:var(--nd-ink)]"><%= link_to group.name, group_path(group), class: "hover:text-[color:var(--nd-accent)]" %></h3>
+                      <span class="rounded-full bg-[color:var(--nd-sidebar)] px-2 py-1 text-xs font-bold text-[color:var(--nd-accent)]"><%= group.posts.size %>개 item</span>
+                    </div>
+                    <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]"><%= group.description.presence || "설명 없음" %></p>
+                  </div>
+
+                  <div class="flex shrink-0 items-center gap-2">
+                    <%= link_to group_path(group), class: "inline-flex h-9 w-9 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-[color:var(--nd-muted)] hover:bg-white hover:text-[color:var(--nd-accent)]", aria: { label: "그룹 보기" }, title: "그룹 보기" do %>
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 12s3.75-6.75 9.75-6.75S21.75 12 21.75 12 18 18.75 12 18.75 2.25 12 2.25 12z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    <% end %>
+                    <%= link_to edit_group_path(group), class: "inline-flex h-9 w-9 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-[color:var(--nd-muted)] hover:bg-white hover:text-[color:var(--nd-accent)]", aria: { label: "그룹 수정" }, title: "그룹 수정" do %>
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4h2m-7 14h12M6 18l-1 3 3-1 8-8-2-2-8 8z" />
+                      </svg>
+                    <% end %>
+                    <%= button_to group_path(group), method: :delete, form_class: "inline", class: "inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-600 bg-red-50 text-red-700 hover:bg-red-600 hover:text-white", data: { turbo_confirm: "그룹을 삭제할까요? 연결된 item은 삭제되지 않고 그룹 없음으로 남습니다." }, aria: { label: "그룹 삭제" }, title: "그룹 삭제" do %>
+                      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12m-9 0V5h6v2m-7 0l1 12h4l1-12" />
+                      </svg>
+                    <% end %>
+                  </div>
+                </div>
+              </article>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div class="rounded-xl border border-dashed border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-6 py-10 text-center">
+          <p class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">아직 그룹이 없습니다.</p>
+          <p class="mt-2 text-sm text-[color:var(--nd-muted)]">첫 그룹을 만들고 새 item을 주제별로 모아보세요.</p>
+          <%= link_to "새 그룹 만들기", new_group_path, class: "mt-5 inline-flex h-10 items-center rounded-md bg-[color:var(--nd-accent)] px-4 text-sm font-bold text-white hover:bg-[color:var(--nd-accent-strong)]" %>
+        </div>
+      <% end %>
+    </section>
+  </div>
 </div>

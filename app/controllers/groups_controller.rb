@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = current_user.groups.order(:name)
+    @groups = current_user.groups.includes(:posts).order(:name)
   end
 
   def show
