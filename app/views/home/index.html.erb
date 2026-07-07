@@ -1,20 +1,100 @@
-<div class="min-h-screen p-12 flex flex-col">
-  <div>
-    <h1>Hello, Rails + Hotwire!!</h1>
-    <p class="text-base">
-      This page is rendered through Rails layout.
-      UA: <%= request.user_agent %>
-    </p>
+<% content_for :title, "NoteDox" %>
+<% content_for :main_top_padding, "pt-0" %>
+<% content_for :main_x_padding, "px-2" %>
 
-    <%= render partial: "message", locals: {
-      message: "처음 표시된 메시지입니다."
-    } %>
+<div class="min-h-screen bg-[color:var(--nd-bg)] pt-3 pb-8">
+  <div class="mx-auto max-w-6xl">
+    <section class="relative overflow-hidden rounded-2xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-4 sm:p-6">
+      <div class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[color:var(--nd-sidebar)]/70 blur-2xl"></div>
+      <div class="pointer-events-none absolute -bottom-16 left-1/3 h-44 w-44 rounded-full bg-[color:var(--nd-accent)]/10 blur-2xl"></div>
 
-    <div class="flex justify-end mt-2">
-      <%= link_to "메시지 바꾸기",
-          home_message_path,
-          data: { turbo_frame: "message_box" },
-          class: "inline-flex rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700" %>
-    </div>
+      <div class="relative grid gap-4 lg:grid-cols-[1.25fr_1fr] lg:items-stretch">
+        <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-4 sm:p-5">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Leedox Origin</p>
+              <h1 class="nd-heading mt-1 text-4xl font-semibold text-[color:var(--nd-ink)] sm:text-5xl">NoteDox</h1>
+            </div>
+            <div class="flex gap-2">
+              <%= link_to new_post_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-white hover:bg-[color:var(--nd-accent-strong)]", aria: { label: "새 표현 추가" }, title: "새 표현 추가" do %>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14M5 12h14" />
+                </svg>
+              <% end %>
+              <%= link_to posts_path, class: "inline-flex h-10 w-10 items-center justify-center rounded-md border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] text-[color:var(--nd-muted)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent)]", aria: { label: "표현 목록 보기" }, title: "표현 목록 보기" do %>
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
+                </svg>
+              <% end %>
+            </div>
+          </div>
+
+          <p class="mt-4 text-base leading-7 text-[color:var(--nd-muted)]">
+            NoteDox는 단어, 표현, 용어를 기록하고 다시 찾아보는 개인 학습 아카이브입니다.
+            오늘의 단어와 표현을 저장하고 memo를 남겨 나만의 맥락을 쌓아보세요.
+          </p>
+
+          <div class="mt-5 grid gap-2 sm:grid-cols-3">
+            <div class="rounded-lg border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-3 py-2">
+              <p class="text-xs uppercase tracking-[0.12em] text-[color:var(--nd-muted)]">Focus</p>
+              <p class="mt-1 text-sm font-semibold text-[color:var(--nd-ink)]">Words & phrases</p>
+            </div>
+            <div class="rounded-lg border border-[color:var(--nd-line)] bg-[color:var(--nd-sidebar)]/65 px-3 py-2">
+              <p class="text-xs uppercase tracking-[0.12em] text-[color:var(--nd-muted)]">Method</p>
+              <p class="mt-1 text-sm font-semibold text-[color:var(--nd-ink)]">Group + Notes</p>
+            </div>
+            <div class="rounded-lg border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] px-3 py-2">
+              <p class="text-xs uppercase tracking-[0.12em] text-[color:var(--nd-muted)]">Goal</p>
+              <p class="mt-1 text-sm font-semibold text-[color:var(--nd-ink)]">Long-term recall</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+          <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Notebook Ritual</p>
+            <p class="nd-heading mt-2 text-2xl font-semibold text-[color:var(--nd-ink)]">Capture</p>
+            <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]">먼저 빠르게 표현을 저장하고, 짧은 메모로 그 순간의 의미를 붙잡아 두세요.</p>
+          </div>
+          <div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-sidebar)]/70 p-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[color:var(--nd-muted)]">Notebook Ritual</p>
+            <p class="nd-heading mt-2 text-2xl font-semibold text-[color:var(--nd-ink)]">Review</p>
+            <p class="mt-2 text-sm leading-6 text-[color:var(--nd-muted)]">그룹과 댓글 스레드를 활용해 맥락을 확장하며 기억의 단서를 계속 보강합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-4 sm:p-5">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--nd-muted)]">Archive Feed</p>
+          <h2 class="nd-heading text-3xl font-semibold text-[color:var(--nd-ink)]">최근 학습 표현</h2>
+        </div>
+        <%= link_to "전체 보기", posts_path, class: "text-sm font-semibold text-[color:var(--nd-accent)] hover:text-[color:var(--nd-accent-strong)]" %>
+      </div>
+
+      <div class="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+        <% if @recent_posts.any? %>
+          <% @recent_posts.each do |post| %>
+            <article class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-4 transition hover:border-[color:var(--nd-accent)]/50">
+              <%= link_to post_path(post), class: "block nd-heading text-2xl font-semibold leading-tight text-[color:var(--nd-ink)] hover:text-[color:var(--nd-accent)]" do %>
+                <%= truncate(post.title, length: 50) %>
+              <% end %>
+              <p class="mt-2 text-sm text-[color:var(--nd-muted)]"><%= post.user.display_name %> · 댓글 <%= post.comments.count %></p>
+              <p class="mt-3 text-sm leading-6 text-[color:var(--nd-muted)]"><%= truncate(post.body, length: 90) %></p>
+              <div class="mt-4">
+                <%= link_to "기록 열기", post_path(post), class: "text-sm font-medium text-[color:var(--nd-accent)] hover:text-[color:var(--nd-accent-strong)]" %>
+              </div>
+            </article>
+          <% end %>
+        <% else %>
+          <div class="rounded-xl border border-dashed border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-6 text-center text-[color:var(--nd-muted)] md:col-span-2 xl:col-span-3">
+            아직 저장된 표현이 없습니다.<br>
+            <%= link_to "첫 표현을 NoteDox에 남겨보세요", new_post_path, class: "font-medium text-[color:var(--nd-accent)] hover:text-[color:var(--nd-accent-strong)]" %>
+          </div>
+        <% end %>
+      </div>
+    </section>
   </div>
 </div>

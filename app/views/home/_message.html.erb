@@ -1,6 +1,6 @@
 <turbo-frame id="message_box">
-  <div style="border: 1px solid #ddd; border-radius: 12px; padding: 20px; margin-top: 20px;">
-    <h2><%= message %></h2>
-    <p>현재 시각: <%= Time.current.strftime("%H:%M:%S") %></p>
+  <div class="mt-5 rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-5">
+    <h2 class="nd-heading text-2xl font-semibold text-[color:var(--nd-ink)]"><%= message %></h2>
+    <p class="mt-1 text-sm text-[color:var(--nd-muted)]">현재 시각: <%= Time.current.strftime("%H:%M:%S") %></p>
   </div>
 </turbo-frame>

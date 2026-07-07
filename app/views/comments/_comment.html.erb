@@ -1,0 +1,32 @@
+<div class="rounded-xl border border-[color:var(--nd-line)] bg-[color:var(--nd-surface)] p-4">
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold text-[color:var(--nd-ink)]"><%= comment.user.display_name %></p>
+      <p class="text-xs text-[color:var(--nd-muted)]"><%= l(comment.created_at, format: :short) %></p>
+      <p class="mt-1 text-xs uppercase tracking-[0.12em] text-[color:var(--nd-muted)]">
+        <%= comment.commentable_type == "Comment" ? "연결 메모" : "시작 메모" %>
+      </p>
+    </div>
+    <% if user_signed_in? && comment.user == current_user %>
+      <%= button_to comment_path(comment), method: :delete, data: { turbo_confirm: "정말 삭제하시겠습니까?" }, class: "inline-flex h-8 w-8 items-center justify-center rounded-md text-[color:var(--nd-accent)] hover:bg-[color:var(--nd-sidebar)] hover:text-[color:var(--nd-accent-strong)]", aria: { label: "메모 삭제" }, title: "메모 삭제" do %>
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 7h12m-9 0V5h6v2m-7 0l1 12h4l1-12" />
+        </svg>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-3 whitespace-pre-line text-[color:var(--nd-ink)]"><%= comment.body %></div>
+  <p class="mt-3 text-xs text-[color:var(--nd-muted)]">Connecting the dots: 이전 메모와 이어지는 개념을 짧게 덧붙여 보세요.</p>
+
+  <% if comment.comments.any? %>
+    <div class="mt-4 space-y-3 border-l-2 border-[color:var(--nd-line)] pl-4">
+      <%= render partial: "comments/comment", collection: comment.comments.order(created_at: :asc), as: :comment, locals: { post: post } %>
+    </div>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <div class="mt-4 border-t border-[color:var(--nd-line)] pt-3">
+      <%= render "comments/form", post: post, commentable_type: "Comment", commentable_id: comment.id, submit_text: "연결 메모 추가" %>
+    </div>
+  <% end %>
+</div>

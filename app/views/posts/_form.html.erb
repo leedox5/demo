@@ -1,0 +1,38 @@
+<%= form_with(model: post, class: "contents") do |form| %>
+  <% submit_label = post.persisted? ? "표현 수정 저장" : "표현 저장" %>
+
+  <% if post.errors.any? %>
+    <div id="error_explanation" class="mt-3 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 font-medium text-amber-900">
+      <h2><%= pluralize(post.errors.count, "개") %> 표현을 저장할 수 없습니다.</h2>
+
+      <ul class="list-disc ml-6">
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title, "표현", class: "text-sm font-medium text-[color:var(--nd-ink)]" %>
+    <%= form.text_field :title, class: ["mt-2 block w-full rounded-md border bg-[color:var(--nd-surface)] px-3 py-2 text-[color:var(--nd-ink)]", {"border-[color:var(--nd-line)] focus:outline-[color:var(--nd-accent)]": post.errors[:title].none?, "border-amber-400 focus:outline-amber-600": post.errors[:title].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :body, "노트/메모", class: "text-sm font-medium text-[color:var(--nd-ink)]" %>
+    <%= form.textarea :body, rows: 4, placeholder: "Connecting the dots: 이어지는 생각과 개념을 기록하세요", class: ["mt-2 block w-full rounded-md border bg-[color:var(--nd-surface)] px-3 py-2 text-[color:var(--nd-ink)]", {"border-[color:var(--nd-line)] focus:outline-[color:var(--nd-accent)]": post.errors[:body].none?, "border-amber-400 focus:outline-amber-600": post.errors[:body].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :group_id, "그룹", class: "text-sm font-medium text-[color:var(--nd-ink)]" %>
+    <%= form.collection_select :group_id, current_user&.groups&.order(:name) || [], :id, :name, { include_blank: "그룹 없음" }, class: ["mt-2 block w-full rounded-md border bg-[color:var(--nd-surface)] px-3 py-2 text-[color:var(--nd-ink)]", {"border-[color:var(--nd-line)] focus:outline-[color:var(--nd-accent)]": post.errors[:group_id].none?, "border-amber-400 focus:outline-amber-600": post.errors[:group_id].any?}] %>
+  </div>
+
+  <div class="inline flex justify-end">
+    <%= form.button type: "submit", class: "inline-flex h-10 w-10 items-center justify-center rounded-md bg-[color:var(--nd-accent)] text-white hover:bg-[color:var(--nd-accent-strong)]", aria: { label: submit_label }, title: submit_label do %>
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    <% end %>
+  </div>
+<% end %>
