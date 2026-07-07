@@ -4,8 +4,10 @@ one:
   is_admin: true
   encrypted_password: <%= Devise::Encryptor.digest(User, "password123") %>
 
+one:
+  email: "one@example.com"
+  encrypted_password: "<%= BCrypt::Password.create('password') %>"
+
 two:
-  name: 두번째 사용자
-  email: user2@example.com
-  is_admin: false
-  encrypted_password: <%= Devise::Encryptor.digest(User, "password123") %>
+  email: "two@example.com"
+  encrypted_password: "<%= BCrypt::Password.create('password') %>"
